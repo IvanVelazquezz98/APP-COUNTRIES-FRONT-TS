@@ -42,9 +42,9 @@ export default function Home(){
     }, []);
 
     return (
-      
+     
       <div  className={styles.firstContainer}>
-            
+        <div className={styles.navBar}></div>
             <div className={styles.objectContainer}>
               {countries ?
             (data.map((c) => {
@@ -59,7 +59,9 @@ export default function Home(){
               )
   
             })) 
-            : <div><Loader/></div>}</div> 
+            : <div><Loader/></div>}
+            </div>
+
 
            <div ref={triggerRef} className={clsx('trigger', { visible: false })}> <Loader/></div>
            </div>

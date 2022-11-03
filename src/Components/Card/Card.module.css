@@ -2,7 +2,7 @@
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    width: 17.2rem; 
+    width: 15rem; 
     height: 15rem;
     align-items: center;
     border-width: 0.5rem;
@@ -19,7 +19,7 @@
     cursor:default;
 }
 .image {
-    width: 17.2rem;
+    width: 15.2rem;
     height: 10rem;
     border-radius: 10px;
     object-fit: cover;
