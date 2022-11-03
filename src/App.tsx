@@ -10,7 +10,7 @@ interface IAppProps {
 const App: FunctionComponent<IAppProps> = (props) => {
   return (
     <BrowserRouter>
-    <Route exact path="/Home" component={Home} />
+    <Route exact path="/" component={Home} />
     </BrowserRouter>
   );
 }

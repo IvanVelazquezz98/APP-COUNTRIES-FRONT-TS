@@ -4,7 +4,7 @@ import {Countries} from "../../Utils/interfaceUtils"
 
 
 interface initialState{
-  allCountries? : Countries[]
+  allCountries? : Countries[] | []
   copyCountries? : Countries[]
   countryName? : Countries[]
   detailCountry? : Array<Countries>[] | []

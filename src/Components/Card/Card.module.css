@@ -1,0 +1,101 @@
+.mainContainer {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    width: 18rem; 
+    height: 25.5rem;
+    align-items: center;
+    border-width: 0.5rem;
+    border-color: #784fe7 ;
+    border: 2px;
+    border-radius: 12px;
+    transition: transform .5s;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 2px;
+    margin-left: 2px;
+    background-color: transparent ;
+    cursor:default;
+}
+
+.mainContainer:hover{
+    text-decoration: none;
+    transform: scale(1.05) ;
+    background-image: url("https://c.tenor.com/LAkFYKmcwIgAAAAd/video-game-pixel-art.gif");
+    box-shadow: 0 0 10px #784fe7;
+    transition-delay: .1s;
+    color: rgb(92, 125, 153);
+    background-size: cover;
+    background-position: -2rem;
+    background-repeat: no-repeat;
+}
+
+.image {
+    width: 18rem;
+    height: 10rem;
+    border-radius: 10px;
+    object-fit: cover;
+    display:flex
+}
+
+.innerContainer{
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: .5px;
+    margin-bottom: .5px;
+    justify-content: center;
+    text-align: center;
+    border: #784fe7;
+}
+
+.innerContainer:hover{
+    color: beige;
+}
+
+.name {
+    text-decoration: none;
+    font-size: 20px;
+    align-items: center;
+    color: #080800;
+    flex-direction: row;
+    display:flex;
+    height: 2rem;
+}
+
+.genres {
+    text-decoration: none;
+    font-size: 11px;
+    color: #0a0a02e0;
+    align-items: center;
+    height: 4rem;
+}
+.botonfavorites{
+    text-decoration: none;
+    font-size: 20px;
+    color: #fc0808be;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform .7s;
+    display: inline-block;
+}
+.botonfavorites:focus{
+    text-decoration: none;
+    font-size: 20px;
+    color: #000000;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.botonfavorites:hover{
+    transform: scale(1.05) ;
+    background: #784fe7;
+    box-shadow: 0 0 10px #0c0c0b ;
+    transition-delay: .2s;
+    color: rgb(7, 7, 1);
+}
