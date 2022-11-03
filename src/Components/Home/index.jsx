@@ -1,11 +1,13 @@
 import react, { useEffect, useState , useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {getCountries , clearPage} from '../../Redux/actions/index'
+import { Link , useHistory } from 'react-router-dom';
 import styles from './Home.module.css'
 import clsx from 'clsx'
 import useLazyLoad from '../LazyLoading/useLazyLoad';
 import Loader from '../Loader'
 import Card from '../Card'
+
 
 export default function Home(){
 
@@ -15,11 +17,8 @@ export default function Home(){
     
     const NUM_PER_PAGE = 13;
     const TOTAL_PAGES = 100;
-
     
      const triggerRef  = useRef(null)
-
-   
     
     const onGrabData  = (currentPage )  => {
         return new Promise((resolve) => {
@@ -50,11 +49,13 @@ export default function Home(){
               {countries ?
             (data.map((c) => {
               return (
+                <Link className={styles.Link} to={`/country/${c.name}`}>
                 <Card
                   name={c.name}
                   flag={c.flag}
                   e={c}>
                 </Card>
+                </Link>
               )
   
             })) 
