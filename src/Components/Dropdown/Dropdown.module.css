@@ -1,0 +1,23 @@
+.mainContainer {
+	display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+
+.filtros {
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+	background: #fff;
+	font-weight: 300;
+	width: 180px;
+	cursor: pointer;
+	border: 0px solid transparent;
+	border-radius: 4px;
+	box-shadow: 0 0 6px -4px #1c1c28;
+	color: #333;
+	font-size: 16px;
+}
