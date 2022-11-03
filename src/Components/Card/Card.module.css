@@ -2,27 +2,34 @@
     text-decoration: none;
     display: flex;
     flex-direction: column;
-    width: 18rem; 
-    height: 25.5rem;
+    width: 17.2rem; 
+    height: 15rem;
     align-items: center;
     border-width: 0.5rem;
-    border-color: #784fe7 ;
+    border-color: #dfd7f5 ;
     border: 2px;
-    border-radius: 12px;
+    box-shadow: 0 0 10px #3c3b41;
+    border-radius: 10rem;
     transition: transform .5s;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    margin-right: 2px;
-    margin-left: 2px;
-    background-color: transparent ;
+    margin-right: 1px;
+    margin-left: 1px;
+    background-color: rgba(255, 0, 0, 0.027) ;
     cursor:default;
+}
+.image {
+    width: 17.2rem;
+    height: 10rem;
+    border-radius: 10px;
+    object-fit: cover;
+    display:flex
 }
 
 .mainContainer:hover{
     text-decoration: none;
     transform: scale(1.05) ;
-    background-image: url("https://c.tenor.com/LAkFYKmcwIgAAAAd/video-game-pixel-art.gif");
-    box-shadow: 0 0 10px #784fe7;
+    box-shadow: 0 0 10px #e25757;
     transition-delay: .1s;
     color: rgb(92, 125, 153);
     background-size: cover;
@@ -30,23 +37,15 @@
     background-repeat: no-repeat;
 }
 
-.image {
-    width: 18rem;
-    height: 10rem;
-    border-radius: 10px;
-    object-fit: cover;
-    display:flex
-}
-
 .innerContainer{
     text-decoration: none;
     display: flex;
+    font-size: 20px;
     flex-direction: column;
-    margin-top: .5px;
-    margin-bottom: .5px;
+    padding: -2px;
     justify-content: center;
     text-align: center;
-    border: #784fe7;
+    border: #ec4848;
 }
 
 .innerContainer:hover{
@@ -57,18 +56,20 @@
     text-decoration: none;
     font-size: 20px;
     align-items: center;
-    color: #080800;
+    color: #111010;
     flex-direction: row;
     display:flex;
     height: 2rem;
 }
 
-.genres {
+.text {
     text-decoration: none;
-    font-size: 11px;
-    color: #0a0a02e0;
+    font-size: 20px;
     align-items: center;
-    height: 4rem;
+    color: #635e5d;
+    flex-direction: row;
+    display:flex;
+    height: 2rem;
 }
 .botonfavorites{
     text-decoration: none;
@@ -80,22 +81,4 @@
     cursor: pointer;
     transition: transform .7s;
     display: inline-block;
-}
-.botonfavorites:focus{
-    text-decoration: none;
-    font-size: 20px;
-    color: #000000;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.botonfavorites:hover{
-    transform: scale(1.05) ;
-    background: #784fe7;
-    box-shadow: 0 0 10px #0c0c0b ;
-    transition-delay: .2s;
-    color: rgb(7, 7, 1);
 }

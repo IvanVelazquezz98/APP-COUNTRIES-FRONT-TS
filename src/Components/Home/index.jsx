@@ -1,11 +1,10 @@
 import react, { useEffect, useState , useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {getCountries , clearPage} from '../../Redux/actions/index'
-import { RootState } from '../../Redux/store';
+import styles from './Home.module.css'
 import clsx from 'clsx'
 import useLazyLoad from '../LazyLoading/useLazyLoad';
 import Loader from '../Loader'
-import React from 'react';
 import Card from '../Card'
 
 export default function Home(){
@@ -44,10 +43,24 @@ export default function Home(){
     }, []);
 
     return (
-           <div> <div>{countries ?
-            (data.map((c) => (<div>{c.name}</div>))) 
+      
+      <div  className={styles.firstContainer}>
+            
+            <div className={styles.objectContainer}>
+              {countries ?
+            (data.map((c) => {
+              return (
+                <Card
+                  name={c.name}
+                  flag={c.flag}
+                  e={c}>
+                </Card>
+              )
+  
+            })) 
             : <div><Loader/></div>}</div> 
-           <div ref={triggerRef} className={clsx('trigger', { visible: false })}><div><Loader/></div> </div>
+
+           <div ref={triggerRef} className={clsx('trigger', { visible: false })}> <Loader/></div>
            </div>
     )
 }

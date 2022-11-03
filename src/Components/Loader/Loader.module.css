@@ -1,0 +1,9 @@
+.loader{
+    width: auto;
+    height: auto;
+    padding: 1rem ;
+    border-radius: 50%;
+    box-sizing: border-box;
+    text-align: center;
+    justify-content: center;
+}
