@@ -29,7 +29,7 @@
 .mainContainer:hover{
     text-decoration: none;
     transform: scale(1.05) ;
-    box-shadow: 0 0 10px #e25757;
+    box-shadow: 0 0 10px #9dd7f1;
     transition-delay: .1s;
     color: rgb(92, 125, 153);
     background-size: cover;
@@ -45,7 +45,7 @@
     padding: -2px;
     justify-content: center;
     text-align: center;
-    border: #ec4848;
+    border: #84e6e1;
 }
 
 .innerContainer:hover{

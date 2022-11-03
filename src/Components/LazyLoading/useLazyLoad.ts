@@ -28,14 +28,14 @@ const reducer = (state, action) => {
   }
 };
 
-const useLazyLoad = ({ triggerRef, onGrabData, options }) => {
+const useLazyLoad  = ({ triggerRef , onGrabData , options  }) => {
   const [state, dispatch] = useReducer(reducer, {
     loading: false,
     currentPage: 1,
     data: []
   });
 
-  const _handleEntry = async (entry) => {
+  const _handleEntry = async (entry ) => {
     const boundingRect = entry.boundingClientRect;
     const intersectionRect = entry.intersectionRect;
 
@@ -54,7 +54,7 @@ const useLazyLoad = ({ triggerRef, onGrabData, options }) => {
   const handleEntry = debounce(_handleEntry, LOAD_DELAY_MS);
 
   const onIntersect = useCallback(
-    (entries) => {
+    (entries ) => {
       handleEntry(entries[0]);
     },
     [handleEntry]
