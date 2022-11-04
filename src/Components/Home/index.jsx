@@ -2,6 +2,7 @@ import react, { useEffect, useState , useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {getCountries , clearPage} from '../../Redux/actions/index'
 import { Link , useHistory } from 'react-router-dom';
+import LoginRegister from '../LoginRegister/index'
 import DetailCountry from '../DetailCountry/index'
 import Dropdown from '../Dropdown/index'
 import styles from './Home.module.css'
@@ -22,6 +23,8 @@ export default function Home(){
     const [detailCountry , setDetail] = useState(null)
     const [modalDetail , setModalDetail] = useState(false)
     const [show, setShow] = useState(false)
+    const [showLoginRegister , setShowLoginRegister] = useState(false)
+
 
     const handleReload = () => {
       window.location.reload();
@@ -35,17 +38,23 @@ export default function Home(){
     
     function closeModal(){
       setShow(false)
+      showLoginRegister(false)
     }
 
     async function openModal() {
        setShow(true)
     }
-  console.log(detailCountry)
+ 
 
     function changeTermDropdown(term) {
       setTerm(term)
       return term
     }
+
+   function openLoginRegister (){
+
+    setShowLoginRegister(!showLoginRegister)
+   }
     
     const NUM_PER_PAGE = 13;
     const TOTAL_PAGES = 100;
@@ -77,17 +86,21 @@ export default function Home(){
      
       <div  className={styles.firstContainer}>
         <div className={styles.navBar}>
-          
+          <button className={styles.button} onClick={() => openLoginRegister()}>Iniciar Sesion</button>
+          <button className={styles.button}>Favoritos</button>
+          <button className={styles.button}>Foro</button>
           <div className={styles.inputContainer} >
           <Dropdown  changeTermDropdown={changeTermDropdown} />
           <input  type="text" placeholder={'Filters by ..' + ' ' + term }
           onChange={event => { setSearchTerm(event.target.value) }} 
           />
-          <button tittle="Recargar Pagina :D" className={styles.botonReload} onClick={() => handleReload()} >↻</button>
+          <button tittle="Recargar Pagina :D" className={styles.botonReload} onClick={() => handleReload()} >🌎↻</button>
           </div>
         </div>
             <div className={styles.objectContainer}>
+              {showLoginRegister ? <LoginRegister closeModal={openLoginRegister} /> : null }
               {show ? <DetailCountry  country={detailCountry} closeModal={closeModal} /> : null}
+
             {countries ?
           data.filter((val) => {
             if (searchTerm === "") {
@@ -106,14 +119,9 @@ export default function Home(){
               </Card>
              </div>
             )
-
           }
-
           ) : <div><Loader/></div>}
-
             </div>
-
-
            <div ref={triggerRef} className={clsx('trigger', { visible: false })}> <Loader/></div>
            </div>
     )

@@ -23,7 +23,7 @@ export default function ModalDetail({ country , closeModal }) {
           <img  className={styles.image} src={country?.flag ? (country.flag) : (<p>Image not found</p>) }/>
           </div>
           <div className={styles.content}>
-            <h4 className={styles.continent}> 🌎 Continente : {country.continent} </h4>
+            <h4 className={styles.continent}> Continente : {country.continent} </h4>
           <div><h5 className={styles.text}>🏙️ Capital: {country.capital}</h5></div>
           <div><h5 className={styles.text}>👉 Sub Region: {country.subregion}</h5></div>
           <div><h5 className={styles.text}>📍 Area: {country.area}</h5></div>

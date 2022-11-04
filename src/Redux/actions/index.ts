@@ -14,6 +14,16 @@ export function getCountries(){
       };
 
 }
+export function registerUser(payload) {
+  return async function (dispatch:Dispatch) {
+      try {
+        var json = await axios.post('http://localhost:3001/api/users/register', payload);
+        return json;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+}
 
 export function clearPage(){
     return {
