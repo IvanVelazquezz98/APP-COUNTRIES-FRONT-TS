@@ -39,27 +39,27 @@ export default function LoginRegister({closeModalRegisterLogin})  {
   const [errorsPassword, setErrorsPassword] = useState({
     password: "inicio"
   })
+
   function registerValidateEmail(input) {
     let nombreMax = 60
     let emailMax = 100
-
     let errorsEmail = {}
 
     if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(input.email)) {
-      setValidate_email("0px 3px 4px 0px rgba(0, 0, 0, 0.08)")
+
       errorsEmail = ""
       if (input.mail < emailMax) {
-        setValidate_email("0px 3px 4px 0px rgba(0, 0, 0, 0.08)")
+
         errorsEmail = ""
       }
 
       if (!input.email) {
-        setValidate_email("0px 3px 6px 2px rgba(241, 91, 100, 0.5)")
+
         errorsEmail = "error"
       }
 
     } else {
-      setValidate_email("0px 3px 6px 2px rgba(241, 91, 100, 0.5)")
+
       errorsEmail = "error"
     }
     return errorsEmail
@@ -72,14 +72,11 @@ export default function LoginRegister({closeModalRegisterLogin})  {
 
     if (input.name.length < 1) {
       errorsName = "vacio"
-      setValidate_name("0px 3px 6px 2px rgba(241, 91, 100, 0.5)")
     }
     if (input.name.length > 66 || input.name.length < 8) {
-      console.log("largo")
       errorsName = "largo"
-      setValidate_name("0px 3px 6px 2px rgba(241, 91, 100, 0.5)")
     } else {
-      setValidate_name("0px 3px 4px 0px rgba(0, 0, 0, 0.08)")
+
       errorsName = ""
     }
     return errorsName
@@ -89,16 +86,13 @@ export default function LoginRegister({closeModalRegisterLogin})  {
   function registerValidatePassword(input) {
 
     let errorsPassword = {}
-
+  
     if (!input.password) {
-      setValidate_password("0px 3px 6px 2px rgba(241, 91, 100, 0.5)")
       errorsPassword = "error"
     }
     if (input.password.length <= 6) {
-      setValidate_password("0px 3px 6px 2px rgba(241, 91, 100, 0.5)")
       errorsPassword = "error"
     } else {
-      setValidate_password("0px 3px 4px 0px rgba(0, 0, 0, 0.08)")
       errorsPassword = ""
     }
     return errorsPassword
@@ -138,29 +132,28 @@ export default function LoginRegister({closeModalRegisterLogin})  {
     }))
   };
 
-  const handleShowPassword = () => {
+  const handleShowPassword = (e) => {
+    e.preventDefault()
     setShowPassword(!showPassword)
   }
 
 
-  const handleRedirectLogin = (e) => {
-    history.push('/login')
-  }
 
   function handleClose() {
     closeModalRegisterLogin()
     setShow(false)
   }
+  console.log(input)
 
   async function handleValidateUser(input) {
-
+    console.log('llegue')
     try {
-      let nombreMax = 60
-      let emailMax = 100
       var json = await axios.get('http://localhost:3001/api/users/' + input.email)
       if (json.data.existe === true) {
         return alert('el usuario ya existe')
+
       } else {
+        console.log('llegue al dispatch')
         dispatch(registerUser(input))
       }
     } catch (error) {
@@ -168,50 +161,38 @@ export default function LoginRegister({closeModalRegisterLogin})  {
     }
   }
 
-  async function handleRegister(e) {
+function handleRegister(e) {
+    e.preventDefault()
     registerValidateName(input);
     registerValidateEmail(input);
     registerValidatePassword(input)
     let nombreMax = 60
     let emailMax = 100
-
+    
     if (!input.email) {
-      setErrorRegister(true)
-      return
+
+      return alert('algo salio mal :C')
     }
     if (!input.name) {
-      setErrorRegister(true)
-      return
+
+      return alert('algo salio mal :C')
     }
     if (input.name < nombreMax) {
-      setErrorRegister(true)
 
-      return
+
+      return alert('algo salio mal :C')
     }
     if (!input.password) {
-      setErrorRegister(true)
-      return
+      return alert('algo salio mal :C')
     }
     if (input.password.length <= 6) {
-      setErrorRegister(true)
-      return
+   
+      return alert('algo salio mal :C')
     }
     handleValidateUser(input)
 
   }
 
-
-  function cerrarPopUp() {
-    setClosePopUp(false)
-    setErrorRegister(false)
-
-    setInput({
-      name: input.name,
-      email: input.email,
-      password: input.password
-    })
-
-  }
 
   return (
 
@@ -257,13 +238,14 @@ export default function LoginRegister({closeModalRegisterLogin})  {
                     name='password'
                     onChange={(e) => handleInputChangePassword(e)} />
               </div>
-          
-             <button className={styles.button}>Registrarse</button> 
+              <button  onClick={(e) => handleShowPassword(e)}>👁️</button>
+
+             <button className={styles.button} onClick={(e) => handleRegister(e)}>Registrarse</button> 
            
               <p className={styles.button}>¿Ya estás registrado?</p>
-              <button className={styles.button} type='button' onClick={(e) => handleRedirectLogin(e)}>
+              {/* <button className={styles.button} type='button' onClick={(e) => handleRedirectLogin(e)}>
                 Iniciar sesión
-              </button>
+              </button> */}
          
     </form>
     </div>
