@@ -10,7 +10,7 @@ import styles from './LoginRegister.module.css'
 
 
 
-export default function LoginRegister({closeModal})  {
+export default function LoginRegister({closeModalRegisterLogin})  {
 
 
   const history = useHistory();
@@ -148,7 +148,7 @@ export default function LoginRegister({closeModal})  {
   }
 
   function handleClose() {
-    closeModal()
+    closeModalRegisterLogin()
     setShow(false)
   }
 

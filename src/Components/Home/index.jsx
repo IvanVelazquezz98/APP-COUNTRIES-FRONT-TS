@@ -38,7 +38,6 @@ export default function Home(){
     
     function closeModal(){
       setShow(false)
-      showLoginRegister(false)
     }
 
     async function openModal() {
@@ -98,7 +97,7 @@ export default function Home(){
           </div>
         </div>
             <div className={styles.objectContainer}>
-              {showLoginRegister ? <LoginRegister closeModal={openLoginRegister} /> : null }
+              {showLoginRegister ? <LoginRegister closeModalRegisterLogin={openLoginRegister} /> : null }
               {show ? <DetailCountry  country={detailCountry} closeModal={closeModal} /> : null}
 
             {countries ?
@@ -107,7 +106,7 @@ export default function Home(){
               return val
             } else if (val?.[term].toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) {
               return val
-            }
+            } 
 
           }).map(c => {
             return (
