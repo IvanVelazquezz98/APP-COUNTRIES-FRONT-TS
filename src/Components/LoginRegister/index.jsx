@@ -1,30 +1,29 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { registerUser, getAllUsers } from "../../Redux/actions/index";
+import { registerUser, getAllUsers, loginUser } from "../../Redux/actions/index";
 import { useSelector } from "react-redux";
 import { FcCheckmark } from "react-icons/fc"
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import styles from './LoginRegister.module.css'
+import ModalError from './modalError'
 
 
 
-export default function LoginRegister({closeModalRegisterLogin})  {
+
+export default function LoginRegister({ closeModalRegisterLogin }) {
 
 
   const history = useHistory();
   const dispatch = useDispatch()
-  const [errorRegister, setErrorRegister] = useState(false)
-  const [validate_name, setValidate_name] = useState("0px 3px 4px 0px rgba(0, 0, 0, 0.08)")
-  const [validate_email, setValidate_email] = useState("0px 3px 4px 0px rgba(0, 0, 0, 0.08)")
-  const [validate_password, setValidate_password] = useState("0px 3px 4px 0px rgba(0, 0, 0, 0.08)")
-  const [closePopUp, setClosePopUp] = useState(false)
+
   const [showPassword, setShowPassword] = useState(false)
   const [show, setShow] = useState(true);
-
-
-
+  const [changeLoginRegister, setChange] = useState(false)
+  const [modalError, setModalError] = useState(false)
+  const [modalErrorMessage , setModalErrorMessage] = useState(null)
+  console.log('modalError',modalError)
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -86,7 +85,7 @@ export default function LoginRegister({closeModalRegisterLogin})  {
   function registerValidatePassword(input) {
 
     let errorsPassword = {}
-  
+
     if (!input.password) {
       errorsPassword = "error"
     }
@@ -137,7 +136,38 @@ export default function LoginRegister({closeModalRegisterLogin})  {
     setShowPassword(!showPassword)
   }
 
+  const handleLogin =  async (e) => { 
+    e.preventDefault()
 
+
+    try {
+      if (!input.email) {
+
+        return setModalError(true) , setModalErrorMessage('Debe colocar un email')
+      }
+     
+      if (!input.password) {
+        return setModalError(true) , setModalErrorMessage('Debe colocar una contraseña')
+      }
+      if (input.password.length <= 6) {
+  
+        return setModalError(true) , setModalErrorMessage('Contraseña invalida')
+      }
+
+    var json = await axios.get('http://localhost:3001/api/users/login' + input)
+    if (json.data.existe === true) {
+      dispatch(loginUser(input))
+      localStorage.setItem("user", input.email);
+    } else if(json.data.existe === false) {
+     return setModalError(true) , setModalErrorMessage('El usuario no existe')
+    }
+  } catch (error) {
+    return setModalError(true), setModalErrorMessage('Contraseña Incorrecta')
+  }
+  }
+  function handleCloseModalError (){
+    setModalError(false)
+  }
 
   function handleClose() {
     closeModalRegisterLogin()
@@ -161,14 +191,14 @@ export default function LoginRegister({closeModalRegisterLogin})  {
     }
   }
 
-function handleRegister(e) {
+  function handleRegister(e) {
     e.preventDefault()
     registerValidateName(input);
     registerValidateEmail(input);
     registerValidatePassword(input)
     let nombreMax = 60
     let emailMax = 100
-    
+
     if (!input.email) {
 
       return alert('algo salio mal :C')
@@ -186,7 +216,7 @@ function handleRegister(e) {
       return alert('algo salio mal :C')
     }
     if (input.password.length <= 6) {
-   
+
       return alert('algo salio mal :C')
     }
     handleValidateUser(input)
@@ -197,59 +227,84 @@ function handleRegister(e) {
   return (
 
     <Modal show={show}>
-    <Modal.Header closeButton onClick={handleClose} >
-      <Modal.Title> Forma parte de Countries App 😁</Modal.Title>
-    </Modal.Header>
-    <Modal.Body>
-    <div>
-      <form >
+      <Modal.Header closeButton onClick={handleClose} >
+        <Modal.Title> Forma parte de Countries App 😁</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
         <div>
-                  <input
-                    className="inputLogin"
-                    value={input.name}
-                    type="text"
-                    name="name"
-                    maxLength='60'
-                    minLength='8'
-                    placeholder="Nombre de usuario"
-                    onChange={(e) => handleInputChangeName(e)}
-                  />
-                  {errorsName.name === "inicio" ? null :
-                    errorsName !== "vacio" && errorsName !== "largo" ? ( <FcCheckmark/> ) : null}
-                
-              </div>
-                <div>
-                  <input type="email"
-                    className="inputLogin"
-                    value={input.email}
-                    name='email'
-                    placeholder="Email"
-                    onChange={(e) => handleInputChangeEmail(e)} />
-                  {errorsEmail.email === "inicio" ? null :
-                    errorsEmail !== "error" ? (<FcCheckmark/>) : null} 
-                
-              </div>
-            <div>
+          {!changeLoginRegister ?
+            <form >
+              <div>
+                <input
+                  className="inputLogin"
+                  value={input.name}
+                  type="text"
+                  name="name"
+                  maxLength='60'
+                  minLength='8'
+                  placeholder="Nombre de usuario"
+                  onChange={(e) => handleInputChangeName(e)}
+                />
+                {errorsName.name === "inicio" ? null :
+                  errorsName !== "vacio" && errorsName !== "largo" ? (<FcCheckmark />) : null}
 
+              </div>
+              <div>
+                <input type="email"
+                  className="inputLogin"
+                  value={input.email}
+                  name='email'
+                  placeholder="Email"
+                  onChange={(e) => handleInputChangeEmail(e)} />
+                {errorsEmail.email === "inicio" ? null :
+                  errorsEmail !== "error" ? (<FcCheckmark />) : null}
+
+              </div>
+              <div>
+
+                <input className="inputPassword"
+                  value={input.password}
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Contraseña"
+                  name='password'
+                  onChange={(e) => handleInputChangePassword(e)} />
+              </div>
+              <button className={styles.button}  onClick={(e) => handleShowPassword(e)}>👁️</button>
+
+              <button className={styles.button} onClick={(e) => handleRegister(e)}>Registrarse</button>
+
+              <p className={styles.button} onClick={() => setChange(!changeLoginRegister)}>¿Ya estás registrado?</p>
+
+
+
+            </form> :
+            <div>
+              <form>
+              <div>
+                <input type="email"
+                  className="inputLogin"
+                  value={input.email}
+                  name='email'
+                  placeholder="Email"
+                  onChange={(e) => handleInputChangeEmail(e)} />
+
+              </div>
+
+                <div>
                   <input className="inputPassword"
                     value={input.password}
                     type={showPassword ? "text" : "password"}
                     placeholder="Contraseña"
                     name='password'
                     onChange={(e) => handleInputChangePassword(e)} />
-              </div>
-              <button  onClick={(e) => handleShowPassword(e)}>👁️</button>
-
-             <button className={styles.button} onClick={(e) => handleRegister(e)}>Registrarse</button> 
-           
-              <p className={styles.button}>¿Ya estás registrado?</p>
-              {/* <button className={styles.button} type='button' onClick={(e) => handleRedirectLogin(e)}>
-                Iniciar sesión
-              </button> */}
-         
-    </form>
-    </div>
-    </Modal.Body>
-      </Modal>
+                </div>
+                <button className={styles.button} onClick={(e) => handleLogin(e)}>Iniciar Sesion</button>
+                <p className={styles.button} onClick={() => setChange(!changeLoginRegister)}>¿No estas registrado? Registrate</p>
+                {modalError ? <ModalError error={modalErrorMessage} closeModal={handleCloseModalError} /> : null}
+              </form>
+            </div>}
+        </div>
+      </Modal.Body>
+    </Modal>
   );
 };

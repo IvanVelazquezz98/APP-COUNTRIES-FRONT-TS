@@ -39,7 +39,7 @@ export default function DropdownInput({changeTermDropdown }) {
           <DropdownItem className={styles.filtros} onClick={() => changeTermDropdown('name')} >Nombre</DropdownItem>
           <DropdownItem className={styles.filtros} onClick={() => changeTermDropdown('continent')} >Continente</DropdownItem>
           <DropdownItem className={styles.filtros} onClick={() => changeTermDropdown('capital')}>Capital</DropdownItem>
-          <DropdownItem className={styles.filtros} onClick={() => changeTermDropdown('Subregion')} >Sub-region</DropdownItem>
+          <DropdownItem className={styles.filtros} onClick={() => changeTermDropdown('subregion')} >Sub-region</DropdownItem>
         </DropdownMenu>
       </Dropdown>
     </div>

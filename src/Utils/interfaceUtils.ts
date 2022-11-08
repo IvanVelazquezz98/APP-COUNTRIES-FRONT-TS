@@ -7,7 +7,7 @@ import { AxiosRequestConfig } from "axios";
     status: number;
     statusText: string;
     headers: any;
-    config: AxiosRequestConfig;
+    config?: AxiosRequestConfig;
     request?: any;
    }
 
@@ -25,3 +25,12 @@ import { AxiosRequestConfig } from "axios";
     location: string,
     timezones: string
 }
+
+export interface User {
+   id?: string,
+   name?:string,
+   email:string,
+   password:string,
+   point?:number
+}
+

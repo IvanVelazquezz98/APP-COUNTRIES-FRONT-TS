@@ -1,8 +1,8 @@
 
-import { Countries } from '../../Utils/interfaceUtils'
+import { Countries , User } from '../../Utils/interfaceUtils'
 export const GET_COUNTRIES = "GET_COUNTRIES"
 export const CLEAR_PAGE = "CLEAR_PAGE"
-
+export const GET_USER = "GET_USER"
 interface ActionGetCountries {
     type:"GET_COUNTRIES"
     payload?: Countries[]
@@ -20,5 +20,10 @@ interface ActionGetCountries {
   interface ActionClearPage {
     type : "CLEAR_PAGE"
   }
-  export type Action = ActionGetCountries | ActionCreateCountries | ActionGetCountriesName | ActionClearPage
+
+  interface getUser {
+    type: "GET_USER",
+    payload?: User[]
+  }
+  export type Action = ActionGetCountries | ActionCreateCountries | ActionGetCountriesName | ActionClearPage | getUser
 

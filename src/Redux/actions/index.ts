@@ -14,8 +14,8 @@ export function getCountries(){
       };
 
 }
-export function registerUser(payload) {
-  return async function (dispatch:Dispatch) {
+export function registerUser(payload : interfaceUtils.User ) {
+  return async function (dispatch : Dispatch) {
       try {
         var json = await axios.post('http://localhost:3001/api/users/register', payload);
         return json;
@@ -29,4 +29,15 @@ export function clearPage(){
     return {
         type: actionTypes.CLEAR_PAGE
     }
+}
+
+export function loginUser(payload ){
+  return async (dispatch:  Dispatch) => {
+    const response  = await axios.get('http://localhost:3001/api/users/login' , payload );
+    dispatch<actionTypes.Action>({
+      type: "GET_USER",
+      payload: response.data
+    })
+  };
+
 }

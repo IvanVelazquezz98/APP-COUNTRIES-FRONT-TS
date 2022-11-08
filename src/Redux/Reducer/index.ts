@@ -1,6 +1,6 @@
 import * as actionTypes from "../actions/actionsTypes"
 import { Action } from "../actions/actionsTypes"
-import {Countries} from "../../Utils/interfaceUtils"
+import {Countries , User} from "../../Utils/interfaceUtils"
 
 
 interface initialState{
@@ -8,13 +8,15 @@ interface initialState{
   copyCountries? : Countries[]
   countryName? : Countries[]
   detailCountry? : Array<Countries>[] | []
+  detailUser? : User[]
 }
 
 const initialState : initialState = {
  allCountries: [],
  copyCountries : [],
  countryName : [],
- detailCountry : []
+ detailCountry : [],
+ detailUser : []
 }
 
 
@@ -34,6 +36,12 @@ export default function rootReducer(state = initialState , action : Action){
               ...state,
               detailCountry : [] 
           }
+
+          case actionTypes.GET_USER:
+            return {
+              ...state,
+              detailUser: action.payload
+            }
 
           
           default: return state

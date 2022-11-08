@@ -3,11 +3,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from "./Components/Home/index"
 import './App.css';
 
-interface IAppProps {
-  title?: string
-}
 
-const App: FunctionComponent<IAppProps> = (props) => {
+
+const App= (props) => {
   return (
     <BrowserRouter>
     <Route exact path="/" component={Home} />
@@ -15,8 +13,6 @@ const App: FunctionComponent<IAppProps> = (props) => {
   );
 }
 
-App.defaultProps = {
-  title: 'REACT WITH TYPESCRIPT'
-}
+
 
 export default App;
