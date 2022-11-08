@@ -23,7 +23,6 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
   const [changeLoginRegister, setChange] = useState(false)
   const [modalError, setModalError] = useState(false)
   const [modalErrorMessage , setModalErrorMessage] = useState(null)
-  console.log('modalError',modalError)
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -141,6 +140,9 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
 
 
     try {
+      if(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(input.email)){
+
+      
       if (!input.email) {
 
         return setModalError(true) , setModalErrorMessage('Debe colocar un email')
@@ -153,7 +155,9 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
   
         return setModalError(true) , setModalErrorMessage('Contraseña invalida')
       }
-
+      } else {
+        return setModalError(true) , setModalErrorMessage('Email invalido')
+      }
     var json = await axios.get('http://localhost:3001/api/users/login' + input)
     if (json.data.existe === true) {
       dispatch(loginUser(input))
@@ -180,14 +184,14 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
     try {
       var json = await axios.get('http://localhost:3001/api/users/' + input.email)
       if (json.data.existe === true) {
-        return alert('el usuario ya existe')
+        return setModalError(true) , setModalErrorMessage('DEl Usuario ya existe')
 
       } else {
         console.log('llegue al dispatch')
         dispatch(registerUser(input))
       }
     } catch (error) {
-      return alert('algo salio mal :(' `${error}`)
+      return setModalError(true) , setModalErrorMessage('Ubo un error inesperado :c')
     }
   }
 
@@ -200,24 +204,18 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
     let emailMax = 100
 
     if (!input.email) {
-
-      return alert('algo salio mal :C')
+      return setModalError(true) , setModalErrorMessage('Debe colocar un email')
     }
     if (!input.name) {
-
-      return alert('algo salio mal :C')
+      return setModalError(true) , setModalErrorMessage('Debe colocar un enombre')
     }
     if (input.name < nombreMax) {
-
-
-      return alert('algo salio mal :C')
-    }
+      return setModalError(true) , setModalErrorMessage('Debe colocar un emailSu nombre es demasiado largo')}
     if (!input.password) {
-      return alert('algo salio mal :C')
+      return setModalError(true) , setModalErrorMessage('Debe colocar una contraseña')
     }
     if (input.password.length <= 6) {
-
-      return alert('algo salio mal :C')
+      return setModalError(true) , setModalErrorMessage('Su contraseña debe superar los 6 caracteres')
     }
     handleValidateUser(input)
 
@@ -274,6 +272,7 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
               <button className={styles.button} onClick={(e) => handleRegister(e)}>Registrarse</button>
 
               <p className={styles.button} onClick={() => setChange(!changeLoginRegister)}>¿Ya estás registrado?</p>
+              {modalError ? <ModalError error={modalErrorMessage} closeModal={handleCloseModalError} /> : null}
 
 
 
