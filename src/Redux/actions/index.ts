@@ -53,5 +53,5 @@ export function getUser(payload){
       payload: response.data.user
     })
   };
-
 }
+

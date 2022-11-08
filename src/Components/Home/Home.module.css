@@ -117,3 +117,10 @@
     transition-delay: .1s;
     color: rgb(3, 3, 1);
 }
+
+.quizCreate{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -6.2rem;
+    margin-bottom: 3rem;
+}

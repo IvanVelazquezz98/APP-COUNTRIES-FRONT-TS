@@ -10,6 +10,8 @@ import clsx from 'clsx'
 import useLazyLoad from '../LazyLoading/useLazyLoad';
 import Loader from '../Loader'
 import Card from '../Card'
+import ModalPerfil from '../Perfil';
+import ModalCreateCountry from '../CreateCountries'
 
 
 
@@ -26,19 +28,16 @@ export default function Home() {
   const [modalDetail, setModalDetail] = useState(false)
   const [show, setShow] = useState(false)
   const [showLoginRegister, setShowLoginRegister] = useState(false)
+  const [perfilUser, setPerfilUser] = useState(false)
+  const [createCountry , setCreateCountry] = useState(false)
+  console.log('perfil' , perfilUser)
 
-  // async function searchUser() {
-  //   let userFound = await localStorage.getItem('user');
-  //   if(userFound){setUser(userFound)}
-  //   else {
-  //      setUser(null)
-  //   }
-    
-  // }
-
- console.log('user estado' , user)
- console.log('user Gobal' , detailUser)
+ const closeModalPerfil = () => {
+  setPerfilUser(false)
+ }
+  
   const handleReload = () => {
+
     window.location.reload();
   }
 
@@ -82,28 +81,30 @@ export default function Home() {
       resolve(data);
     })
   }
+  const handleCloseCreateCountry = () => {
+    setCreateCountry(false)
+  }
   const { data, loading } = useLazyLoad({ triggerRef, onGrabData })
 
 
 
   useEffect(() => {
-   
     dispatch(getCountries())
-
     setTimeout(function () {
       dispatch(getUser(user))
     }, 2500);
-    
-  }, []);
 
+  }, []);
+  console.log('createcountry' , createCountry)
   return (
 
     <div className={styles.firstContainer}>
       <div className={styles.navBar}>
-        {detailUser?.length !== 0 ? <button className={styles.button}> Perfil 👤</button> :
+        {detailUser?.length !== 0 ? <button className={styles.button} onClick={() => setPerfilUser(!perfilUser)}> Perfil 👤</button> :
           <button className={styles.button} onClick={() => openLoginRegister()}>Iniciar Sesion</button>}
         <button className={styles.button}>Favoritos</button>
         <button className={styles.button}>Foro</button>
+        
         <div className={styles.inputContainer} >
           <Dropdown changeTermDropdown={changeTermDropdown} />
           <input type="text" placeholder={'Filters by ..' + ' ' + term}
@@ -112,7 +113,15 @@ export default function Home() {
           <button tittle="Recargar Pagina :D" className={styles.botonReload} onClick={() => handleReload()} >🌎↻</button>
         </div>
       </div>
+      { user ? 
+      <div className={styles.quizCreate}>
+       <button className={styles.button} onClick={() => setCreateCountry(!createCountry)}>Crear Pais</button>
+       {createCountry ? <ModalCreateCountry user={detailUser} handleClose={handleCloseCreateCountry}/>: null}
+       
+        <button className={styles.button}>Juega el QuizCountries</button> 
+      </div> : null}
       <div className={styles.objectContainer}>
+        {perfilUser ? <ModalPerfil user = {detailUser} closeModal={closeModalPerfil} /> : null}
         {showLoginRegister ? <LoginRegister closeModalRegisterLogin={openLoginRegister} /> : null}
         {show ? <DetailCountry country={detailCountry} closeModal={closeModal} /> : null}
 
