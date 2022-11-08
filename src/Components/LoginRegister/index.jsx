@@ -135,12 +135,18 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
     setShowPassword(!showPassword)
   }
 
+  const handleReload = () => {
+    window.location.reload();
+  }
+
   const handleLogin =  async (e) => { 
     e.preventDefault()
 
 
     try {
-      if(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(input.email)){
+      if(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(!input.email)){
+        return setModalError(true) , setModalErrorMessage('Debe colocar un email valido')
+      } 
 
       
       if (!input.email) {
@@ -155,13 +161,13 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
   
         return setModalError(true) , setModalErrorMessage('Contraseña invalida')
       }
-      } else {
-        return setModalError(true) , setModalErrorMessage('Email invalido')
-      }
-    var json = await axios.get('http://localhost:3001/api/users/login' + input)
+    let user = {email : input.email , password : input.password}
+      
+    var json = await axios.post('http://localhost:3001/api/users/register/login' , user )
     if (json.data.existe === true) {
-      dispatch(loginUser(input))
+      dispatch(loginUser(user))
       localStorage.setItem("user", input.email);
+      return handleReload()
     } else if(json.data.existe === false) {
      return setModalError(true) , setModalErrorMessage('El usuario no existe')
     }
@@ -180,20 +186,20 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
   console.log(input)
 
   async function handleValidateUser(input) {
-    console.log('llegue')
     try {
       var json = await axios.get('http://localhost:3001/api/users/' + input.email)
       if (json.data.existe === true) {
-        return setModalError(true) , setModalErrorMessage('DEl Usuario ya existe')
+        return setModalError(true) , setModalErrorMessage('El Usuario ya existe')
 
       } else {
-        console.log('llegue al dispatch')
         dispatch(registerUser(input))
+        return handleReload()
       }
     } catch (error) {
-      return setModalError(true) , setModalErrorMessage('Ubo un error inesperado :c')
+      return setModalError(true) , setModalErrorMessage('Hubo un error inesperado :c')
     }
   }
+  console.log('imput' , input)
 
   function handleRegister(e) {
     e.preventDefault()
@@ -201,16 +207,20 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
     registerValidateEmail(input);
     registerValidatePassword(input)
     let nombreMax = 60
-    let emailMax = 100
+
+    
+    if( ( /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(input.email) === false)){
+     return setModalError(true) , setModalErrorMessage('Debe colocar un email valido')
+    } 
 
     if (!input.email) {
       return setModalError(true) , setModalErrorMessage('Debe colocar un email')
     }
     if (!input.name) {
-      return setModalError(true) , setModalErrorMessage('Debe colocar un enombre')
+      return setModalError(true) , setModalErrorMessage('Debe colocar un nombre')
     }
     if (input.name < nombreMax) {
-      return setModalError(true) , setModalErrorMessage('Debe colocar un emailSu nombre es demasiado largo')}
+      return setModalError(true) , setModalErrorMessage('Su nombre es demasiado largo')}
     if (!input.password) {
       return setModalError(true) , setModalErrorMessage('Debe colocar una contraseña')
     }

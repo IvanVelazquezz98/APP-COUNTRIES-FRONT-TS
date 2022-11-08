@@ -27,10 +27,14 @@ import { AxiosRequestConfig } from "axios";
 }
 
 export interface User {
-   id?: string,
-   name?:string,
-   email:string,
-   password:string,
-   point?:number
+      id?: string,
+      name?: string,
+      lastName?: null,
+      descripcion?: null,
+      imagen_profile?: null,
+      password?: string,
+      email?: string,
+      createdAt?: string,
+      updatedAt?: string
 }
 
