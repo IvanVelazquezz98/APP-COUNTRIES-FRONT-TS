@@ -12,9 +12,9 @@ export default function ModalPerfil({closeModal , user}) {
 
   async function handleCountriesForUser(user) {
     try {
-      var json = await axios.get('http://localhost:3001/api/countries/CreatedForUser' , user.id)
+      var json = await axios.get('http://localhost:3001/api/countries/user/' + user.id)
       if (json.data.existe === true) {
-        return setCountriesByUser(json.data.countries)
+        return setCountriesByUser(json.data)
       } else {
         return setCountriesByUser(null)
       }
@@ -25,6 +25,8 @@ export default function ModalPerfil({closeModal , user}) {
   useEffect(() => {
     handleCountriesForUser(user)
   }, []);
+
+  console.log('countrys por usuario' , countriesByUser)
   
   return (
     <>
@@ -49,17 +51,14 @@ export default function ModalPerfil({closeModal , user}) {
             </h4>
           </div>
           <div className={styles.content}> <p className={styles.continent} >Paises creados por {user.name} :</p> <div>
-            {countriesByUser  ? (countriesByUser.map((e) => { <div><div>
-          <img  className={styles.image} src={e?.flag ? (e.flag) : (<p>Image not found</p>) }/>
-          </div>
-          <div>
-                <h4 className={styles.continent}>{e.name}</h4>
-          </div> 
-          </div>})) :
+            {countriesByUser  ? countriesByUser.countries?.map((e) => {
+             return  (<div><p> 🌍 {e.name} </p> : <img className={styles.imageCountries}   src={e?.flag ? (e.flag) : (<p>Image not found</p>) }/></div> )    
+            }) :
              <p className={styles.continent} >No tienes paises creados :c <button className={styles.button} >Crea tu propio pais </button></p>  }
             </div> 
             </div>
         </Modal.Body>
+        
       </Modal>
     </>
   );
