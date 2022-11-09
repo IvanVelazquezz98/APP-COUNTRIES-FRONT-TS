@@ -55,3 +55,12 @@ export function getUser(payload){
   };
 }
 
+export function createCountry(payload){
+  return async (dispatch:  Dispatch) => {
+
+    const response  = await axios.post('http://localhost:3001/api/countries/CreateCountry' , payload );
+    return response
+    
+  };
+}
+

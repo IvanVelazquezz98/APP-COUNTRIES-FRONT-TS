@@ -7,7 +7,7 @@ import { FcCheckmark } from "react-icons/fc"
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import styles from './LoginRegister.module.css'
-import ModalError from './modalError'
+import ModalError from '../ModalError/modalError'
 
 
 
@@ -193,6 +193,7 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
 
       } else {
         dispatch(registerUser(input))
+        localStorage.setItem("user", input.email);
         return handleReload()
       }
     } catch (error) {

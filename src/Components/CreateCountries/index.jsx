@@ -3,22 +3,25 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { registerUser, getAllUsers, loginUser } from "../../Redux/actions/index";
 import { useSelector } from "react-redux";
-import { FcCheckmark } from "react-icons/fc"
+import { FcCheckmark } from "react-icons/fc";
 import Modal from 'react-bootstrap/Modal';
+import styles from './CreateCountry.module.css';
 import axios from 'axios';
+import ModalError from "../ModalError/modalError";
+import ModalVistaPrevia from "./ModalVistaPrevia";
 
 
 
+export default function ModalCreateCountry({ user, handleClose }) {
 
 
-export default function ModalCreateCountry({ user , handleClose}) {
 
-
- 
 
     const [show, setShow] = useState(true);
     const [modalError, setModalError] = useState(false)
     const [modalErrorMessage, setModalErrorMessage] = useState(null)
+    const [openVistaPrevia , setVistaPrevia] = useState(false)
+
     const [input, setInput] = useState({
         name: "",
         flag: "",
@@ -27,14 +30,15 @@ export default function ModalCreateCountry({ user , handleClose}) {
         subregion: "",
         area: "",
         population: "",
-        unMember: "",
         location: "",
         timezones: "",
-        userCountries: user.id
+        userId: user.id
 
     })
-    
 
+    const handleCloseModalError = () => {
+        setModalError(false)
+    }
     const handleInputChange = function (e) {
         setInput({
             ...input,
@@ -42,105 +46,118 @@ export default function ModalCreateCountry({ user , handleClose}) {
         });
     };
 
-   const history = useHistory();
-    const dispatch = useDispatch()
+    const handleVistaPrevia = (e) => {
+        e.preventDefault()
+        if(!input.name || !input.flag ||
+            !input.continent || !input.subregion ||
+            !input.area || !input.population ||
+            !input.location || !input.timezones ){
+            return setModalError(true) , 
+            setModalErrorMessage('Debes llenar todos los campos') }
+            else{
+                setVistaPrevia(true)
+            }
+    }
+
+    const handleCloseModaVistaPrevia = () => {
+        setVistaPrevia(false)
+    }
 
 
+    console.log('input', input)
 
     return (
 
         <Modal show={show}>
             <Modal.Header closeButton onClick={handleClose} >
-                <Modal.Title> Crea tu propio pais </Modal.Title>
+                <Modal.Title> Crea tu propio pais 🌎 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div>
+                <div >
 
                     <form >
-                        <div>
-                        <label>Nombre</label>
-                            <input
-                               
-                                value={input.name}
-                                type="text"
-                                name="name"
-                                maxLength='60'
-                                minLength='8'
-                                placeholder="Nombre del pais"
-                                onChange={(e) => handleInputChange(e)}
-                            />
-                        
+                        <div className={styles.firstDiv}>
+                            <div className={styles.inputContainer}>
+                                <label className={styles.text}> Nombre : </label>
+                                <input className={styles.input}
+                                    value={input.name}
+                                    type="text"
+                                    name='name'
+                                    maxLength='60'
+                                    minLength='8'
+                                    placeholder="Nombre del pais"
+                                    onChange={(e) => handleInputChange(e)}
+                                />
 
-                        </div>
-                        <div >
-                            <label >Bandera</label>
-                            <input  type="url" value={input.image} name="image" onChange={(e) => handleInputChange(e)}></input>
-                        </div>
-                        <div>
-                        <label >Continente</label>
-                            <input type="email"
-                               
-                                value={input.email}
-                                name='email'
-                                placeholder="Email"
-                                onChange={(e) => handleInputChange(e)} />
-                        </div>
-                        <div>
-                        <label>Capital</label>
-                            <input
-                                value={input.password}
-                                type="text"
-                                placeholder="Contraseña"
-                                name='password'
-                                onChange={(e) => handleInputChange(e)} />
-                        </div>
+                                <label className={styles.text} >Bandera :</label>
+                                <input className={styles.input} 
+                                placeholder="Bandera"  
+                                type="url" 
+                                name='flag'
+                                value={input.flag} 
+                                onChange={(e) => handleInputChange(e)}></input>
 
-                        <div>
-                        <label>Sub Region</label>
-                            <input type="text"
-                             
-                                value={input.email}
-                                name='email'
-                                placeholder="Email"
-                                onChange={(e) => handleInputChange(e)} />
+
+                                <label className={styles.text} >Continente :</label>
+                                <input className={styles.input} type="text"
+                                    value={input.continent}
+                                    name='continent'
+                                    placeholder="Continente"
+                                    onChange={(e) => handleInputChange(e)} />
+
+
+                                <label className={styles.text}>Capital :</label>
+                                <input className={styles.input}
+                                    value={input.capital}
+                                    type="text"
+                                    name='capital'
+                                    placeholder="Capital"
+                                    onChange={(e) => handleInputChange(e)} />
+
+
+                                <label className={styles.text}>Sub Region :</label>
+                                <input className={styles.input} type="text"
+                                    value={input.subregion}
+                                    name='subregion'
+                                    placeholder="Sub Region"
+                                    onChange={(e) => handleInputChange(e)} />
+
+                                <label className={styles.text}>Poblacion :</label>
+                                <input className={styles.input}
+                                    value={input.population}
+                                    type="text"
+                                    name='population'
+                                    placeholder="Poblacion"
+                                    onChange={(e) => handleInputChange(e)} />
+
+                                <label className={styles.text}>Area :</label>
+                                <input className={styles.input}
+                                    value={input.area}
+                                    type="text"
+                                    name='area'
+                                    placeholder="Area"
+                                    onChange={(e) => handleInputChange(e)} />
+
+                                <label className={styles.text}>Localizacion</label>
+                                <input className={styles.input}
+                                    value={input.location}
+                                    type="text"
+                                    name='location'
+                                    placeholder="Localizacion"
+                                    onChange={(e) => handleInputChange(e)} />
+
+                                <label className={styles.text}>Zona horaria :</label>
+                                <input className={styles.input}
+                                    value={input.timezones}
+                                    name='timezones'
+                                    type="text"
+                                    placeholder="Zona horaria"
+                                    onChange={(e) => handleInputChange(e)} />
+                                    <button className={styles.button} onClick={(e) => handleVistaPrevia(e)}> Vista Previa </button>
+                                {modalError ? <ModalError error={modalErrorMessage} closeModal={handleCloseModalError} /> : null}
+                                {openVistaPrevia ? <ModalVistaPrevia country={input} closeModal={handleCloseModaVistaPrevia}  /> : null}
+                            </div>
                         </div>
-                        <div>
-                        <label>Poblacion</label>
-                            <input 
-                                value={input.password}
-                                type= "text"
-                                placeholder="Contraseña"
-                                name='password'
-                                onChange={(e) => handleInputChange(e)} />
-                        </div>
-                        <div>
-                        <label>Area</label>
-                            <input 
-                                value={input.password}
-                                type="text" 
-                                placeholder="Contraseña"
-                                name='password'
-                                onChange={(e) => handleInputChange(e)} />
-                        </div>
-                        <div>
-                        <label>Localizacion</label>
-                            <input 
-                                value={input.password}
-                                type= "text" 
-                                placeholder="Contraseña"
-                                name='password'
-                                onChange={(e) => handleInputChange(e)} />
-                        </div>
-                        <div>
-                        <label>Zona horaria</label>
-                            <input 
-                                value={input.password}
-                                type= "text" 
-                                placeholder="Contraseña"
-                                name='password'
-                                onChange={(e) => handleInputChange(e)} />
-                        </div>
-                        {/* {modalError ? <ModalError error={modalErrorMessage} closeModal={handleCloseModalError} /> : null} */}
                     </form>
                 </div>
 

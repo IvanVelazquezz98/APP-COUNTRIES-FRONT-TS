@@ -100,7 +100,7 @@ export default function Home() {
 
     <div className={styles.firstContainer}>
       <div className={styles.navBar}>
-        {detailUser?.length !== 0 ? <button className={styles.button} onClick={() => setPerfilUser(!perfilUser)}> Perfil 👤</button> :
+        {user ? <button className={styles.button} onClick={() => setPerfilUser(!perfilUser)}> Perfil 👤</button> :
           <button className={styles.button} onClick={() => openLoginRegister()}>Iniciar Sesion</button>}
         <button className={styles.button}>Favoritos</button>
         <button className={styles.button}>Foro</button>

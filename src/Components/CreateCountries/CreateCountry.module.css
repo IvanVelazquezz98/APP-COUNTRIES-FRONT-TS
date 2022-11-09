@@ -1,0 +1,71 @@
+
+.firstDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.inputContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: -2.5rem;
+    flex-direction: column;
+}
+
+.imput{
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border-color: #5fe9f3;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+.button{
+    cursor: pointer;
+    text-decoration:none;
+    font-weight:15px;
+    font-size:15px;
+    color:#06b9f0;
+    padding: 0.5rem;
+    background-color:#f9fbfc;
+    border-radius: 1.2rem;
+    transition: transform .7s;
+    border-color: #5fe9f3;
+    box-shadow: #383737;
+    display: flex;
+    margin-bottom: 0.5rem;
+    margin-top: 0.1rem;
+    margin-left: 0.2rem;
+    margin-top: 1.5rem;
+}
+.button:hover{
+    transform: scale(1.05) ;
+    background:#9b9b9c;
+    box-shadow: 0 0 10px #080808 ;
+    transition-delay: .1s;
+    color: rgb(3, 3, 1);
+}
+
+
+
+
+.text{
+    margin-top: 1.2rem;
+    font-size: 22px;
+    color: #323131;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: stretch;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: #080808;
+    font-style: inherit;
+    font-weight: 600;
+}
