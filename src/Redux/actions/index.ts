@@ -64,3 +64,20 @@ export function createCountry(payload){
   };
 }
 
+export function setFavorite(payload){
+  return async (dispatch:  Dispatch) => {
+
+    const response  = await axios.post('http://localhost:3001/api/user/favorites/CreateFavorite' , payload );
+    return response
+    
+  };
+}
+
+export function removeFavorite(payload){
+  return async (dispatch:  Dispatch) => {
+
+    const response  = await axios.post('http://localhost:3001/api/user/favorites/' +  payload );
+    return response
+    
+  };
+}

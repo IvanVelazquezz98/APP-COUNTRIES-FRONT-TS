@@ -123,7 +123,7 @@ export default function Home() {
       <div className={styles.objectContainer}>
         {perfilUser ? <ModalPerfil user = {detailUser} closeModal={closeModalPerfil} /> : null}
         {showLoginRegister ? <LoginRegister closeModalRegisterLogin={openLoginRegister} /> : null}
-        {show ? <DetailCountry country={detailCountry} closeModal={closeModal} /> : null}
+        {show ? <DetailCountry user={detailUser} country={detailCountry} closeModal={closeModal} /> : null}
 
         {countries ?
           data.filter((val) => {
