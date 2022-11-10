@@ -12,6 +12,7 @@ import Loader from '../Loader'
 import Card from '../Card'
 import ModalPerfil from '../Perfil';
 import ModalCreateCountry from '../CreateCountries'
+import ModalFavorites from '../Favorites';
 
 
 
@@ -30,7 +31,8 @@ export default function Home() {
   const [showLoginRegister, setShowLoginRegister] = useState(false)
   const [perfilUser, setPerfilUser] = useState(false)
   const [createCountry , setCreateCountry] = useState(false)
-  console.log('perfil' , perfilUser)
+  const [favoritesModal , setFavoritesModal] = useState(false)
+
 
  const closeModalPerfil = () => {
   setPerfilUser(false)
@@ -66,6 +68,10 @@ export default function Home() {
     setShowLoginRegister(!showLoginRegister)
   }
 
+  function closeModalFavorites () {
+    setFavoritesModal(false)
+  }
+
   const NUM_PER_PAGE = 13;
   const TOTAL_PAGES = 100;
 
@@ -95,14 +101,14 @@ export default function Home() {
     }, 2500);
 
   }, []);
-  console.log('createcountry' , createCountry)
+
   return (
 
     <div className={styles.firstContainer}>
       <div className={styles.navBar}>
         {user ? <button className={styles.button} onClick={() => setPerfilUser(!perfilUser)}> Perfil 👤</button> :
           <button className={styles.button} onClick={() => openLoginRegister()}>Iniciar Sesion</button>}
-        <button className={styles.button}>Favoritos</button>
+        <button className={styles.button} onClick={() => setFavoritesModal(true)}>Favoritos</button>
         <button className={styles.button}>Foro</button>
         
         <div className={styles.inputContainer} >
@@ -124,6 +130,7 @@ export default function Home() {
         {perfilUser ? <ModalPerfil user = {detailUser} closeModal={closeModalPerfil} /> : null}
         {showLoginRegister ? <LoginRegister closeModalRegisterLogin={openLoginRegister} /> : null}
         {show ? <DetailCountry user={detailUser} country={detailCountry} closeModal={closeModal} /> : null}
+        {favoritesModal ? <ModalFavorites user={detailUser} closeModal={closeModalFavorites}/> : null}
 
         {countries ?
           data.filter((val) => {

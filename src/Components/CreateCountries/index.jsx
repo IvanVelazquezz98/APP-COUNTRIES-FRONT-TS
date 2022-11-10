@@ -1,9 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { registerUser, getAllUsers, loginUser } from "../../Redux/actions/index";
-import { useSelector } from "react-redux";
-import { FcCheckmark } from "react-icons/fc";
 import Modal from 'react-bootstrap/Modal';
 import styles from './CreateCountry.module.css';
 import axios from 'axios';
@@ -64,7 +59,6 @@ export default function ModalCreateCountry({ user, handleClose }) {
     }
 
 
-    console.log('input', input)
 
     return (
 

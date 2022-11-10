@@ -1,0 +1,110 @@
+.divImage{
+    display:flex
+}
+
+.image {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 2rem;
+    display: block;
+    margin: 0px auto;
+    align-items: center;
+    justify-content: center;
+    border: 1rem;
+    border-color: aqua;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+    margin-left: -1rem;
+    padding-left: 7rem;
+}
+.content{
+    padding-left: 6rem;
+    padding-right: 6rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.title{
+    text-decoration: none;
+    font-weight: 25px;
+    font-size: 25px;
+    color: #131212;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 0.5rem;
+    justify-content: center;
+    display: flex;
+    box-shadow: #080808;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: center;
+    background-color: #ccf8f8;
+    
+}
+.text{
+    font-size: 20px;
+    color: #080808;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: stretch;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: #080808;
+}
+.button{
+    cursor: pointer;
+    text-decoration:none;
+    font-weight:15px;
+    font-size:15px;
+    color:#06b9f0;
+    padding: 0.5rem;
+    background-color:#f9fbfc;
+    border-radius: 1.2rem;
+    transition: transform .7s;
+    border-color: #5fe9f3;
+    box-shadow: #383737;
+    display: flex;
+    margin-bottom: 0.5rem;
+    margin-top: 0.1rem;
+    margin-left: 0.2rem;
+}
+.button:hover{
+    transform: scale(1.05) ;
+    background:#9b9b9c;
+    box-shadow: 0 0 10px #080808 ;
+    transition-delay: .1s;
+    color: rgb(3, 3, 1);
+}
+.imageCountries{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 10px;
+    
+    align-items: center;
+    justify-content: center;
+}
+.divCountriesCreated{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    color: #535352;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.divEditUser{
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+}

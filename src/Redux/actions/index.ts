@@ -76,7 +76,7 @@ export function setFavorite(payload){
 export function removeFavorite(payload){
   return async (dispatch:  Dispatch) => {
 
-    const response  = await axios.post('http://localhost:3001/api/user/favorites/' +  payload );
+    const response  = await axios.delete('http://localhost:3001/api/user/favorites/' +  payload );
     return response
     
   };
