@@ -17,6 +17,7 @@
     margin-left: 1px;
     background-color: rgba(255, 0, 0, 0.027) ;
     cursor:pointer;
+    margin:1rem
 }
 .image {
     width: 15.2rem;

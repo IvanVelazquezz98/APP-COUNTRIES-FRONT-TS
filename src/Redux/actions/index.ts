@@ -81,3 +81,12 @@ export function removeFavorite(payload){
     
   };
 }
+
+export function updateUser(payload){
+  return async (dispatch:  Dispatch) => {
+
+    const response  = await axios.put('http://localhost:3001/api/users/update' , payload );
+    return response
+    
+  };
+}
