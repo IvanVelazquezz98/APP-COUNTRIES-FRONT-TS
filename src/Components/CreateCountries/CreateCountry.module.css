@@ -11,8 +11,9 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    margin-top: -2.5rem;
     flex-direction: column;
+    background-color: #ccf8f8;
+
 }
 
 .imput{
