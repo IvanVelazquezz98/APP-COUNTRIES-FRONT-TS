@@ -90,3 +90,14 @@ export function updateUser(payload){
     
   };
 }
+
+export function updateUserScore(payload){
+  return async (dispatch:  Dispatch) => {
+
+    const response  = await axios.put('http://localhost:3001/api/users/update/score' , payload );
+    return response
+    
+  };
+}
+
+

@@ -13,7 +13,8 @@ import Card from '../Card'
 import ModalPerfil from '../Perfil';
 import ModalCreateCountry from '../CreateCountries'
 import ModalFavorites from '../Favorites';
-
+import ModalQuiz from '../Quiz';
+import ModalMenuQuiz from '../Quiz/MenuQuiz';
 
 
 export default function Home() {
@@ -32,6 +33,7 @@ export default function Home() {
   const [perfilUser, setPerfilUser] = useState(false)
   const [createCountry , setCreateCountry] = useState(false)
   const [favoritesModal , setFavoritesModal] = useState(false)
+  const [openQuiz , setOpenQuiz] = useState(false)
 
 
  const closeModalPerfil = () => {
@@ -70,6 +72,10 @@ export default function Home() {
 
   function closeModalFavorites () {
     setFavoritesModal(false)
+  }
+
+  function closeModalQuiz () {
+    setOpenQuiz(false)
   }
 
   const NUM_PER_PAGE = 13;
@@ -124,14 +130,15 @@ export default function Home() {
        <button className={styles.button} onClick={() => setCreateCountry(!createCountry)}>Crear Pais</button>
        {createCountry ? <ModalCreateCountry user={detailUser} handleClose={handleCloseCreateCountry}/>: null}
        
-        <button className={styles.button}>Juega el QuizCountries</button> 
+        <button className={styles.button} onClick={(e) => setOpenQuiz(true)}>Juega el QuizCountries</button> 
       </div> : null}
       <div className={styles.objectContainer}>
         {perfilUser ? <ModalPerfil user = {detailUser} closeModal={closeModalPerfil} /> : null}
         {showLoginRegister ? <LoginRegister closeModalRegisterLogin={openLoginRegister} /> : null}
         {show ? <DetailCountry user={detailUser} country={detailCountry} closeModal={closeModal} /> : null}
         {favoritesModal ? <ModalFavorites user={detailUser} closeModal={closeModalFavorites}/> : null}
-
+        {openQuiz ? <ModalMenuQuiz user={detailUser} closeModal={closeModalQuiz} /> : null}
+        
         {countries ?
           data.filter((val) => {
             if (searchTerm === "") {
