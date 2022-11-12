@@ -13,8 +13,8 @@ export default function ModalDetail({ user, country, closeModal }) {
 
 
   async function handleFavoritesForUser(user) {
-
-    var json = await axios.get('http://localhost:3001/api/user/favorites/user/' + user.id)
+    try{
+    var json = await axios.get('http://localhost:3001/api/user/favorites/user/' + user?.id)
     if (json.data.existe === true) {
       let info = json.data
       let result = info.favorites.filter((e) => (e.name === country.name))
@@ -27,6 +27,9 @@ export default function ModalDetail({ user, country, closeModal }) {
     else {
       console.log(json.existe)
     }
+  }catch(error){
+    return setFavoritesUser(null)
+  }
 
 
   }
@@ -42,7 +45,7 @@ export default function ModalDetail({ user, country, closeModal }) {
     population: country.population,
     location: country.location,
     timezones: country.timezones,
-    userId: user.id
+    userId: user?.id
   })
 
   function handleClose() {
@@ -57,7 +60,7 @@ export default function ModalDetail({ user, country, closeModal }) {
   }
 
   useEffect(() => {
-    handleFavoritesForUser(user)
+   if(user !== undefined){handleFavoritesForUser(user)} 
 
   }, []);
   return (

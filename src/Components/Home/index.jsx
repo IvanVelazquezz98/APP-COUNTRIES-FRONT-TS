@@ -114,7 +114,7 @@ export default function Home() {
       <div className={styles.navBar}>
         {user ? <button className={styles.button} onClick={() => setPerfilUser(!perfilUser)}> Perfil 👤</button> :
           <button className={styles.button} onClick={() => openLoginRegister()}>Iniciar Sesion</button>}
-        <button className={styles.button} onClick={() => setFavoritesModal(true)}>Favoritos</button>
+        {user ? <button className={styles.button} onClick={() => setFavoritesModal(true)}>Favoritos</button> : null}
         <button className={styles.button}>Foro</button>
         
         <div className={styles.inputContainer} >
