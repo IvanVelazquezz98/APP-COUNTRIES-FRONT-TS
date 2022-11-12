@@ -15,7 +15,7 @@ import ModalCreateCountry from '../CreateCountries'
 import ModalFavorites from '../Favorites';
 import ModalQuiz from '../Quiz';
 import ModalMenuQuiz from '../Quiz/MenuQuiz';
-
+import Contacto from '../Contacto/index'
 
 export default function Home() {
 
@@ -34,7 +34,7 @@ export default function Home() {
   const [createCountry , setCreateCountry] = useState(false)
   const [favoritesModal , setFavoritesModal] = useState(false)
   const [openQuiz , setOpenQuiz] = useState(false)
-
+  const [openContact , setOpenContact] = useState(false)
 
  const closeModalPerfil = () => {
   setPerfilUser(false)
@@ -77,6 +77,9 @@ export default function Home() {
   function closeModalQuiz () {
     setOpenQuiz(false)
   }
+  function closeModalContact(){
+    setOpenContact(false)
+  }
 
   const NUM_PER_PAGE = 13;
   const TOTAL_PAGES = 100;
@@ -98,6 +101,7 @@ export default function Home() {
   }
   const { data, loading } = useLazyLoad({ triggerRef, onGrabData })
 
+ 
 
 
   useEffect(() => {
@@ -128,17 +132,18 @@ export default function Home() {
       { user ? 
       <div className={styles.quizCreate}>
        <button className={styles.button} onClick={() => setCreateCountry(!createCountry)}>Crear Pais</button>
-       {createCountry ? <ModalCreateCountry user={detailUser} handleClose={handleCloseCreateCountry}/>: null}
-       
         <button className={styles.button} onClick={(e) => setOpenQuiz(true)}>Juega el QuizCountries</button> 
       </div> : null}
+      <div className={styles.about}><button className={styles.button} onClick={(e) => setOpenContact(true)}>Sobre mi</button></div>
+      
       <div className={styles.objectContainer}>
+        {createCountry ? <ModalCreateCountry user={detailUser} handleClose={handleCloseCreateCountry}/>: null}
         {perfilUser ? <ModalPerfil user = {detailUser} closeModal={closeModalPerfil} /> : null}
         {showLoginRegister ? <LoginRegister closeModalRegisterLogin={openLoginRegister} /> : null}
         {show ? <DetailCountry user={detailUser} country={detailCountry} closeModal={closeModal} /> : null}
         {favoritesModal ? <ModalFavorites user={detailUser} closeModal={closeModalFavorites}/> : null}
         {openQuiz ? <ModalMenuQuiz user={detailUser} closeModal={closeModalQuiz} /> : null}
-        
+        {openContact ? <Contacto closeModal={closeModalContact}/> :  null}
         {countries ?
           data.filter((val) => {
             if (searchTerm === "") {
@@ -149,7 +154,7 @@ export default function Home() {
 
           }).map(c => {
             return (
-              <div onClick={(e) => clickCountryDetails(c)}>
+              <div key={c.name} onClick={(e) => clickCountryDetails(c)}>
                 <Card
                   name={c.name}
                   flag={c.flag}

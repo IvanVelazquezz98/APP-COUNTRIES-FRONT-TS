@@ -124,3 +124,10 @@
     margin-top: -6.2rem;
     margin-bottom: 3rem;
 }
+
+.about{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -10rem;
+    margin-bottom: 3rem;
+}

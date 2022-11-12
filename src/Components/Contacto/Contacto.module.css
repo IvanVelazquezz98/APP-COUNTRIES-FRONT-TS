@@ -1,0 +1,9 @@
+.image{
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+}
+.divTitle{
+    background-color: #ccf8f8;
+}

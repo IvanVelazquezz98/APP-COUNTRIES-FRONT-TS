@@ -55,12 +55,11 @@ export default function ModalQuiz({ user, closeModal }) {
         }
         else{
             setErrorQuest(errorQuest +1 )
+            await questDiscard()
             return random(0 , quest.length -1)
         }
-
-
     }
-  
+  console.log('preguntas', quest)
   return (
     <>
 
