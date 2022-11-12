@@ -73,12 +73,11 @@ export default function ModalQuiz({ user, closeModal }) {
             {!quest ? <p>Loading..</p> : 
             <div>
          
-          <div className={styles.title}><p>Pregunta numero : {preguntaActual} </p></div>
 
          <div className={styles.title}><p>{quest[preguntaActual]?.titulo}</p></div>
             
           <div className={styles.title}> {quest[preguntaActual]?.opciones?.map((r) => { 
-            return (<button className={styles.button} className={styles.button} key={r.textoRespuesta} onClick={(e) => handleAnswerSumbit(r.isCorrect , e)}>{r.textoRespuesta}</button>)
+            return (<button className={styles.button} className={styles.button} key={r.titulo} onClick={(e) => handleAnswerSumbit(r.isCorrect , e)}>{r.textoRespuesta}</button>)
             
           })}</div>
           

@@ -38,7 +38,7 @@ export default function ModalPerfil({closeModal , user}) {
   }
 
   const handleLogOut = () => {
-    localStorage.removeItem(user)
+    localStorage.removeItem('user')
     window.location.reload();
   }
 
@@ -80,7 +80,7 @@ export default function ModalPerfil({closeModal , user}) {
              return  (<div className={styles.divCountriesCreated} ><p className={styles.info}> 🌍 {e?.name} </p> : <img className={styles.imageCountries}
                 src={e?.flag ? (e.flag) : (<p className={styles.info}>Image not found</p>) }/></div> )    
             }) :
-             <p className={styles.info}>No tienes paises creados :c <button className={styles.button} onClick={() => setCreateCountry(true)}>Crea tu propio pais </button></p>)  }
+             <p className={styles.info}>No tienes paises creados  <button className={styles.button} onClick={() => setCreateCountry(true)}>Crea tu propio pais </button></p>)  }
             </div>
             </div> 
             </div>
