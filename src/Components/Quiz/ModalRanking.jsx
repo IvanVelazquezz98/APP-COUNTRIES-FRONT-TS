@@ -10,7 +10,8 @@ export default function ModalRanking({ user, closeModal }) {
     const [ranking, setRanking] = useState(null)
     const [infoUser , setInfoUser] = useState(false)
     const [openModalInfoUser , setOpenModalInfoUser] = useState(false)
-    var number = 0
+    // const [number, setNumber] = useState(0)
+    var number = 1
 
     useEffect(() => {
         getRanking()
@@ -24,7 +25,7 @@ export default function ModalRanking({ user, closeModal }) {
 
     }
 
-
+    console.log('ranking', ranking)
 
     function top5(users) {
         users = users?.point?.parseFloat(users.point).sort((a, b) => b - a);
@@ -49,11 +50,11 @@ export default function ModalRanking({ user, closeModal }) {
                     <Modal.Title>Hola {user.name} este es el ranking de usuarios  </Modal.Title>
                 </Modal.Header>
                 <Modal.Body><p>* Puedes ver la informacion de los usuarios clickeando su nickname </p>
-                    {ranking ? ranking.map((useRef) => {
-                        return (<div className={styles.divRanking} ><h3 className={styles.title} >* {number + 1}</h3> 
+                    {ranking ? ranking.map((user) => {
+                        return (<div className={styles.divRanking} ><h3 className={styles.title} >*  <div><p>{number++}  </p> </div></h3> 
                         <p className={styles.text} onClick={(e) => handleInfoUser(e , user)}> {user.name} </p> <div className={styles.pointContainer}>
-                            <button className={styles.point} >{user.point}</button>
-                        </div>{(number === 1) ? <p className={styles.pointContainer}>🏆</p> : null } </div> )
+                            <div className={styles.pointContainer}><button className={styles.point} >{user.point}</button></div>
+                        </div>{(number === 1) ?  (<p className={styles.pointContainer}>🏆</p>)  : null } </div>  )
                     }): <p>Loading..</p>}
 
                 </Modal.Body>
