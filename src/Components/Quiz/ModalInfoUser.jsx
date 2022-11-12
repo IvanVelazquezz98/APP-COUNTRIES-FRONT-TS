@@ -4,16 +4,26 @@ import Modal from 'react-bootstrap/Modal';
 import styles from './ModalInfoUser.module.css'
 import axios from "axios"
 import { useDispatch, useSelector } from 'react-redux';
-
+import ModalDetail from '../DetailCountry';
 
 
 export default function ModalInfoUser({closeModal , user}) {
   const [showError, setShow] = useState(true);
   const [countriesByUser, setCountriesByUser] = useState({existe:false , countries:[]})
+  const [modalDetail, setOpenModalDetail] = useState(false)
+  const [countrySelected, setCountrySelected] = useState(false)
   const detailUser = useSelector((state) => state.detailUser)
 
 
+  const closeModalDetail  = () => {
+    setCountrySelected(false)
+    setOpenModalDetail(false)
+  }
 
+  const handleCoutrySelected = (e,c) => {
+    setCountrySelected(c)
+    setOpenModalDetail(true)
+  }
 
 
   async function handleCountriesForUser(user) {
@@ -29,10 +39,7 @@ export default function ModalInfoUser({closeModal , user}) {
     }
   }
 
-  const handleLogOut = () => {
-    localStorage.removeItem(user)
-    window.location.reload();
-  }
+ 
 
   useEffect(() => {
     handleCountriesForUser(user)
@@ -40,7 +47,7 @@ export default function ModalInfoUser({closeModal , user}) {
 
 
   return (
-    <>
+    <>{modalDetail ? <ModalDetail user={detailUser} country={countrySelected} closeModal={closeModalDetail} /> : null}
 
       <Modal show={showError}>
         <Modal.Header closeButton onClick={() =>  closeModal()} >
@@ -64,9 +71,9 @@ export default function ModalInfoUser({closeModal , user}) {
             </h4>
           </div>
           <div className={styles.content}> <div className={styles.title}><p className={styles.title} >Paises creados por {user?.name} :</p>  <div>
-           { ( (countriesByUser.countries?.length !== 0)   ? countriesByUser.countries?.map((e) => {
-             return  (<div className={styles.divCountriesCreated} ><p className={styles.info}> 🌍 {e?.name} </p> : <img className={styles.imageCountries}
-                src={e?.flag ? (e.flag) : (<p className={styles.info}>Image not found</p>) }/></div> )    
+           { ( (countriesByUser.countries?.length !== 0)   ? countriesByUser.countries?.map((c) => {
+             return  (<div className={styles.divCountriesCreated} onClick={(e) => handleCoutrySelected(e,c)} ><p className={styles.info}> 🌍 {c?.name} </p> : <img className={styles.imageCountries}
+                src={c?.flag ? (c.flag) : (<p className={styles.info}>Image not found</p>) }/></div> )    
             }) :
              <p className={styles.info}>El usuario no tiene paises creados</p>)  }
             </div>

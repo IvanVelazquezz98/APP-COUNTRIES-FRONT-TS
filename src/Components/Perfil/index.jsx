@@ -6,7 +6,7 @@ import axios from "axios"
 import { useDispatch, useSelector } from 'react-redux';
 import ModalCreateCountry from '../CreateCountries';
 import ModalUpdateUser from './ModalUpdate';
-
+import ModalDetail from '../DetailCountry';
 
 export default function ModalPerfil({closeModal , user}) {
   const [showError, setShow] = useState(true);
@@ -14,6 +14,8 @@ export default function ModalPerfil({closeModal , user}) {
   const [createCountry , setCreateCountry] = useState(false)
   const [updateUser , setUpdateUser] = useState(false)
   const detailUser = useSelector((state) => state.detailUser)
+  const [modalDetail, setOpenModalDetail] = useState(false)
+  const [countrySelected, setCountrySelected] = useState(false)
 
   const handleCloseCreateCountry = () => {
     setCreateCountry(false)
@@ -22,7 +24,10 @@ export default function ModalPerfil({closeModal , user}) {
   const handleCloseModalUpdate = () => {
     setUpdateUser(false)
   }
-
+  const closeModalDetail  = () => {
+    setCountrySelected(false)
+    setOpenModalDetail(false)
+  }
 
   async function handleCountriesForUser(user) {
     try {
@@ -42,6 +47,11 @@ export default function ModalPerfil({closeModal , user}) {
     window.location.reload();
   }
 
+  const handleCoutrySelected = (e,c) => {
+    setCountrySelected(c)
+    setOpenModalDetail(true)
+  }
+
   useEffect(() => {
     handleCountriesForUser(user)
   }, []);
@@ -49,6 +59,7 @@ export default function ModalPerfil({closeModal , user}) {
 
   return (
     <>
+    {modalDetail ? <ModalDetail user={detailUser} country={countrySelected} closeModal={closeModalDetail} /> : null}
 
       <Modal show={showError}>
         <Modal.Header closeButton onClick={() =>  closeModal()} >
@@ -76,9 +87,9 @@ export default function ModalPerfil({closeModal , user}) {
             </h4>
           </div>
           <div className={styles.content}> <div className={styles.title}><p className={styles.title} >Paises creados por {user?.name} :</p>  <div>
-           { ( (countriesByUser.countries?.length !== 0)   ? countriesByUser.countries?.map((e) => {
-             return  (<div className={styles.divCountriesCreated} ><p className={styles.info}> 🌍 {e?.name} </p> : <img className={styles.imageCountries}
-                src={e?.flag ? (e.flag) : (<p className={styles.info}>Image not found</p>) }/></div> )    
+           { ( (countriesByUser.countries?.length !== 0)   ? countriesByUser.countries?.map((c) => {
+             return  (<div className={styles.divCountriesCreated} onClick={(e) => handleCoutrySelected(e,c)} ><p className={styles.info}> 🌍 {c?.name} </p> : <img className={styles.imageCountries}
+                src={c?.flag ? (c.flag) : (<p className={styles.info}>Image not found</p>) }/></div> )    
             }) :
              <p className={styles.info}>No tienes paises creados  <button className={styles.button} onClick={() => setCreateCountry(true)}>Crea tu propio pais </button></p>)  }
             </div>

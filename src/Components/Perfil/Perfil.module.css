@@ -90,6 +90,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    cursor: pointer;
 }
 .info{
     display: flex;
