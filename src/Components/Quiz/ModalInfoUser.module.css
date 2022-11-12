@@ -1,10 +1,29 @@
-.divButtons{
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 2rem;
+.divImage{
+    display:flex;
+    margin-top: 3rem;
+    
 }
 
-
+.image {
+    margin-top: 3rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 2rem;
+    display: block;
+    margin: 0px auto;
+    align-items: center;
+    justify-content: center;
+    border: 1rem;
+    border-color: aqua;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
+}
+.content{
+    padding-left: 6rem;
+    padding-right: 6rem;
+    border-radius: 10px;
+    text-align: center;
+}
 
 .title{
     text-decoration: none;
@@ -36,7 +55,6 @@
     flex-direction: row;
     align-items: center;
     box-shadow: #080808;
-    cursor: pointer;
 }
 .button{
     cursor: pointer;
@@ -62,10 +80,31 @@
     transition-delay: .1s;
     color: rgb(3, 3, 1);
 }
-
-.reglas{
-    display: flex;
+.imageCountries{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 10px;
+    
+    align-items: center;
+    justify-content: center;
 }
-.textReglas{
+.divCountriesCreated{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
     color: #535352;
+    font-size: 1rem;
+}
+.divEditUser{
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
 }

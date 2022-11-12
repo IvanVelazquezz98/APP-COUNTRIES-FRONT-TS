@@ -1,7 +1,6 @@
 .divButtons{
     display: flex;
     justify-content: space-around;
-    margin-bottom: 2rem;
 }
 
 
@@ -36,6 +35,9 @@
     flex-direction: row;
     align-items: center;
     box-shadow: #080808;
+    margin-left: 3rem;
+    margin-right: 7rem;
+    font-weight: 500;
     cursor: pointer;
 }
 .button{
@@ -62,10 +64,25 @@
     transition-delay: .1s;
     color: rgb(3, 3, 1);
 }
-
-.reglas{
+.divRanking{
     display: flex;
 }
-.textReglas{
-    color: #535352;
+.point{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 2rem;
+    height: 2rem;
+    background-color: #f5ea1a;
+    border-radius: 1rem;
+    align-content: center;
+    flex-direction: row;
+    justify-content: center;
+}
+.pointContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 1rem;
 }
