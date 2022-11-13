@@ -37,7 +37,7 @@ export default function ModalMenuQuiz({ user, closeModal }) {
              <h5 className={styles.textReglas}>* Cada pregunta tiene un total de 4 opciones</h5>
              <h5 className={styles.textReglas}>* Son mas de 100 preguntas</h5>
              <h5 className={styles.textReglas}>* No sabrás cuando has cometido un error ni tu puntuación actual, así que piensa bien tus respuestas </h5>   
-             <div className={styles.title}><h5 className={styles.textReglas}>Responde lo mejor que puedas y deja tu nombre en el ranking de usuarios</h5>
+             <div className={styles.title}><h5 className={styles.textReglas}>Responde lo mejor que puedas, deja tu nombre en el ranking de usuarios y consigue todas las insignias.</h5>
              <h4 className={styles.textReglas}>¿Podras ser el mejor de todos? 🏆</h4></div>
                     </Modal.Body>
       </Modal>

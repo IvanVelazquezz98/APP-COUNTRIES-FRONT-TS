@@ -20,17 +20,24 @@ export default function ModalRanking({ user, closeModal }) {
     const getRanking = async () => {
         var json = await axios.get('http://localhost:3001/api/users/All')
 
-        let ranking = top5(json.data)
-        setRanking(json.data)
+        let ranking = json.data
+       let filterUser = ranking.sort(function(a,b) {
+            if(a.point < b.point){
+               return 1
+            }
+             if (b.point < a.point){
+                 return -1
+             }
+             return 0
+         }) 
+       
+        setRanking(filterUser)
 
     }
 
     console.log('ranking', ranking)
 
-    function top5(users) {
-        users = users?.point?.parseFloat(users.point).sort((a, b) => b - a);
-        return [users?.point[0], users?.point[1], users?.point[2], users?.point[3], users?.point[4], users?.point[5]];
-    };
+    ;
     const closeModalInfoUser = () => {
         setInfoUser(null)
         setOpenModalInfoUser(false)
@@ -54,7 +61,7 @@ export default function ModalRanking({ user, closeModal }) {
                         return (<div className={styles.divRanking} ><h3 className={styles.title} >*  <div><p>{number++}  </p> </div></h3> 
                         <p className={styles.text} onClick={(e) => handleInfoUser(e , user)}> {user.name} </p> <div className={styles.pointContainer}>
                             <div className={styles.pointContainer}><button className={styles.point} >{user.point}</button></div>
-                        </div>{(number === 1) ?  (<p className={styles.pointContainer}>🏆</p>)  : null } </div>  )
+                        </div>{(number === 0) ?  (<p className={styles.pointContainer}>🏆</p>)  : null } </div>  )
                     }): <p>Loading..</p>}
 
                 </Modal.Body>

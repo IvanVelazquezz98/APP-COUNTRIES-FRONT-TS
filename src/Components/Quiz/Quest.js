@@ -118,10 +118,10 @@ const preguntas = [
       },{
         titulo: "¿Cuántos continentes existen?",
         opciones: [
-          { textoRespuesta: "Ninguna de las anteriores", isCorrect: false },
           { textoRespuesta: "4", isCorrect: false },
           { textoRespuesta: "6", isCorrect: false },
           { textoRespuesta: "5", isCorrect: true },
+          { textoRespuesta: "Ninguna de las anteriores", isCorrect: false }
         ],
       },{
       titulo: "¿Qué continente es el más grande?",
@@ -204,12 +204,172 @@ const preguntas = [
         { textoRespuesta: "26", isCorrect: false },
       ],
     },{
-      titulo: "¿Cuál es la capital de Suiza?",
+      titulo: "¿Qué es Madagascar?",
       opciones: [
-        { textoRespuesta: "Zuisa", isCorrect: false },
-        { textoRespuesta: "Suiza", isCorrect: false },
-        { textoRespuesta: "Berna", isCorrect: true },
+        { textoRespuesta: "Ciudad", isCorrect: false },
+        { textoRespuesta: "Isla", isCorrect: false },
+        { textoRespuesta: "Pais", isCorrect: true },
         { textoRespuesta: "Ninguna de las anteriores", isCorrect: false },
+      ],
+    },{
+      titulo: "¿Dónde se encuentra el Taj Mahal?",
+      opciones: [
+        { textoRespuesta: "La india", isCorrect: true },
+        { textoRespuesta: "Egipto", isCorrect: false },
+        { textoRespuesta: "Qatar", isCorrect: false },
+        { textoRespuesta: "Arabia Saudita", isCorrect: false },
+      ],
+    },{
+      titulo: "¿Dónde encontramos el Machu Pichu?",
+      opciones: [
+        { textoRespuesta: "Bolivia", isCorrect: false },
+        { textoRespuesta: "Peru", isCorrect: true },
+        { textoRespuesta: "Mexico", isCorrect: false},
+        { textoRespuesta: "Ecuador", isCorrect: false },
+      ],
+    },{
+      titulo: "¿Cuál es el lago más grande del mundo?",
+      opciones: [
+        { textoRespuesta: "Lago Huron", isCorrect: false },
+        { textoRespuesta: "Lago Michigan", isCorrect: false },
+        { textoRespuesta: "Lago Vicotria", isCorrect: false },
+        { textoRespuesta: "Mar Caspio", isCorrect: true },
+      ],
+    },{
+      titulo: "¿Qué montaña es la más alta de Europa?",
+      opciones: [
+        { textoRespuesta: "Monte Elbrus", isCorrect: true },
+        { textoRespuesta: "Monte Dij-Tau", isCorrect: false },
+        { textoRespuesta: "Tetnuldi", isCorrect: false },
+        { textoRespuesta: "Mont Blanc", isCorrect: false },
+      ],
+    },{
+      titulo: "¿En qué ciudad de Italia se encuentra la escultura de David de Miguel Ángel?",
+      opciones: [
+        { textoRespuesta: "Paris, Francia", isCorrect: false },
+        { textoRespuesta: "Florencia, Italia", isCorrect: true },
+        { textoRespuesta: "Roma, Italia", isCorrect: false },
+        { textoRespuesta: "Madrid, España", isCorrect: false },
+      ],
+    },{
+      titulo: " ¿Cuál es la ciudad más calurosa de la Tierra?",
+      opciones: [
+        { textoRespuesta: "Ciudad de Phalodi", isCorrect: false },
+        { textoRespuesta: "Sahara", isCorrect: false },
+        { textoRespuesta: "Valle de la muerte", isCorrect: true },
+        { textoRespuesta: "Localidad de Sibi", isCorrect: false },
+      ],
+    },{
+      titulo: "¿En que pais vive el creador de Countries App?",
+      opciones: [
+        { textoRespuesta: "España", isCorrect: false },
+        { textoRespuesta: "Mexico", isCorrect: false },
+        { textoRespuesta: "Uruguay", isCorrect: false },
+        { textoRespuesta: "Ninguna de las anteriores", isCorrect: true },
+      ],
+    },{
+      titulo: "¿¿Qué continente se encuentra en los 4 hemisferios??",
+      opciones: [
+        { textoRespuesta: "Africa", isCorrect: true },
+        { textoRespuesta: "Oceania", isCorrect: false },
+        { textoRespuesta: "Europa", isCorrect: false },
+        { textoRespuesta: "America central", isCorrect: false },
+      ],
+    },{
+      titulo: "¿¿Qué continente es el más poblado??",
+      opciones: [
+        { textoRespuesta: "Europa", isCorrect: false },
+        { textoRespuesta: "Asia", isCorrect: true },
+        { textoRespuesta: "America del sur", isCorrect: false },
+        { textoRespuesta: "America del norte", isCorrect: false },
+      ],
+    },{
+      titulo: "¿Cuál es el país más pequeño de América?",
+      opciones: [
+        { textoRespuesta: "Granada", isCorrect: false },
+        { textoRespuesta: "Antigua y Barbuda", isCorrect: false },
+        { textoRespuesta: "San Cristóbal y Nieves", isCorrect: true },
+        { textoRespuesta: "Barbados", isCorrect: false },
+      ],
+    },{
+      titulo: "¿Cuál es el lugar más seco del planeta?",
+      opciones: [
+        { textoRespuesta: "Antartida", isCorrect: true },
+        { textoRespuesta: "Antartica", isCorrect: false },
+        { textoRespuesta: "Egipto", isCorrect: false },
+        { textoRespuesta: "Madagazcar", isCorrect: false },
+      ],
+    },{
+      titulo: "¿Cuál es el país más poblado de África?",
+      opciones: [
+        { textoRespuesta: "Qatar", isCorrect: false },
+        { textoRespuesta: "Nigeria", isCorrect: true },
+        { textoRespuesta: "Egipto", isCorrect: false },
+        { textoRespuesta: "Camerun", isCorrect: false },
+      ],
+    },{
+      titulo: "¿Cuál es la capital de Egipto?",
+      opciones: [
+        { textoRespuesta: "Otpige", isCorrect: false },
+        { textoRespuesta: "Egipto", isCorrect: false },
+        { textoRespuesta: "El Cairo", isCorrect: true },
+        { textoRespuesta: "El Salar", isCorrect: false },
+      ],
+    },{
+      titulo: "¿Cuál es la lengua más hablada del mundo?",
+      opciones: [
+        { textoRespuesta: "Japones", isCorrect: false },
+        { textoRespuesta: "Chino", isCorrect: false },
+        { textoRespuesta: "Español", isCorrect: false },
+        { textoRespuesta: "Ingles", isCorrect: true },
+      ],
+    },{
+      titulo: "¿Cuál es el idioma oficial de Andorra?",
+      opciones: [
+        { textoRespuesta: "Catalan", isCorrect: true },
+        { textoRespuesta: "Andorrano", isCorrect: false },
+        { textoRespuesta: "Español", isCorrect: false },
+        { textoRespuesta: "Ninguna de las Anteriores", isCorrect: false },
+      ],
+    },{
+      titulo: "¿Cuál es el Estado más grande de Estados Unidos?",
+      opciones: [
+        { textoRespuesta: "Arizona", isCorrect: false },
+        { textoRespuesta: "Alaska", isCorrect: true },
+        { textoRespuesta: "New York", isCorrect: false },
+        { textoRespuesta: "California", isCorrect: false },
+      ],
+    },{
+      titulo: "¿Dónde se encuentra el estrecho de Magallanes?",
+      opciones: [
+        { textoRespuesta: "Chile", isCorrect: false },
+        { textoRespuesta: "Norte America", isCorrect: false },
+        { textoRespuesta: "Sur America", isCorrect: true },
+        { textoRespuesta: "America Central", isCorrect: false },
+      ],
+    },{
+      titulo: "¿Cual es el pais que fue nombado el mas feliz del mundo?",
+      opciones: [
+        { textoRespuesta: "Suiza", isCorrect: false },
+        { textoRespuesta: "Noruega", isCorrect: false },
+        { textoRespuesta: "Nutan", isCorrect: false },
+        { textoRespuesta: "Costa Rica", isCorrect: true },
+      ],
+    },{
+      titulo: "¿Cual es el pais mas grande de Africa?",
+      opciones: [
+        { textoRespuesta: "Argelia", isCorrect: true },
+        { textoRespuesta: "Nigeria", isCorrect: false },
+        { textoRespuesta: "Chad", isCorrect: false },
+        { textoRespuesta: "AMali", isCorrect: false },
+      ],
+    },{
+      titulo: "¿Que pais latinoamerica es la madre del tango?",
+      opciones: [
+        { textoRespuesta: "Chile", isCorrect: false },
+        { textoRespuesta: "Argentina", isCorrect: true },
+        { textoRespuesta: "Brazil", isCorrect: false },
+        { textoRespuesta: "Uruguay", isCorrect: false },
       ],
     },
   ];

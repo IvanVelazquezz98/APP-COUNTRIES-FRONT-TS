@@ -6,6 +6,7 @@ import preguntas from './Quest'
 import QuizGameOver from './ModalGameOver'
 import ModalGameOver from './ModalGameOver';
 import styles from './Quiz.module.css'
+import ModalIsFinished from './IsFinished';
 
 export default function ModalQuiz({ user, closeModal }) {
   const [show, setShow] = useState(true);
@@ -38,7 +39,7 @@ export default function ModalQuiz({ user, closeModal }) {
     }
 
     const questDiscard = () => {
-        let discard = quest.filter( (e) => (e.titulo !== preguntas[preguntaActual].titulo))
+        let discard = quest.filter( (e) => (e.titulo !== preguntas[preguntaActual].titulo && e.opciones[0]!== preguntas[preguntaActual].opciones[0] ) )
             setQuest(discard)
     }
 
@@ -68,6 +69,7 @@ export default function ModalQuiz({ user, closeModal }) {
           <Modal.Title> QuizCountries 🌍  </Modal.Title>
         </Modal.Header>
         <Modal.Body>
+            {isfinished ? <ModalIsFinished user={user} score={puntuacion}/> : null}
             {gameOver ? <ModalGameOver user={user} score={puntuacion} /> : null}
             {!quest ? <p>Loading..</p> : 
             <div>
