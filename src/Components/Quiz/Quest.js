@@ -126,8 +126,8 @@ const preguntas = [
       },{
       titulo: "¿Qué continente es el más grande?",
       opciones: [
-        { textoRespuesta: "Africa", isCorrect: false },
-        { textoRespuesta: "Asia", isCorrect: true },
+        { textoRespuesta: "Africa", isCorrect: true },
+        { textoRespuesta: "Asia", isCorrect: false },
         { textoRespuesta: "Europa", isCorrect: false },
         { textoRespuesta: "Ninguna de las anteriores", isCorrect: false },
       ],

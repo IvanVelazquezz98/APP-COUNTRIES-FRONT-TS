@@ -16,7 +16,7 @@ export default function ModalQuiz({ user, closeModal }) {
   const [errorQuest , setErrorQuest] = useState(0)
   const [gameOver , setGameOver] = useState(false)
   const [isfinished , setIsFinished] = useState(false)
-
+  const [count , setCount] = useState(10)
 
 
   useEffect(() => {
@@ -31,15 +31,20 @@ export default function ModalQuiz({ user, closeModal }) {
    }
   }, []);
 
+console.log('count' , count)
+
+ 
     function random(min, max) {
-        if(quest.length === 0){
+        if(quest.length -1 === 0){
             return isfinished(true)
         }
+
     return setPreguntaActual(Math.floor((Math.random() * (max - min + 1)) + min)) ;
     }
 
     const questDiscard = () => {
-        let discard = quest.filter( (e) => (e.titulo !== preguntas[preguntaActual].titulo && e.opciones[0]!== preguntas[preguntaActual].opciones[0] ) )
+        let discard = quest.filter( (e) => (e.titulo !== preguntas[preguntaActual].titulo &&
+           e.opciones[0]!== preguntas[preguntaActual].opciones[0] && e.opciones[1]!== preguntas[preguntaActual].opciones[1]  ) )
             setQuest(discard)
     }
 
@@ -52,11 +57,17 @@ export default function ModalQuiz({ user, closeModal }) {
         if(isCorrect === true){
             setPuntuacion(puntuacion + 1)
            await questDiscard()
+           if(errorQuest === 3){
+            return setGameOver(true)
+        }
             return random(0 , quest.length -1 )
         }
         else{
             setErrorQuest(errorQuest +1 )
             await questDiscard()
+            if(errorQuest === 3){
+              return setGameOver(true)
+          }
             return random(0 , quest.length -1)
         }
     }

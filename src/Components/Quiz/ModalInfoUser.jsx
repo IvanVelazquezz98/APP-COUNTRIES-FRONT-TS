@@ -79,6 +79,15 @@ export default function ModalInfoUser({closeModal , user}) {
             </div>
             </div> 
             </div>
+            <br></br>
+            <div className={styles.content}><p className={styles.title}>Insignias del usuario :</p>
+              <div className={styles.insignias}>
+              {user.point > 20 ? <button title="Trofeo de bronce (20 preguntas correctas)" className={styles.insignia20}>👦</button> : null}
+              {user.point > 35 ? <button title="Trofeo de plata (35 preguntas correctas)" className={styles.insignia50}>🌎</button> : null}
+              {user.point > 50 ? <button title="Trofeo de oro (50 preguntas correctas)" className={styles.insignia70}>🏆</button> : null}
+              {user.point > 70 ? <button title="Trofeo de diamante (70 preguntas correctas)" className={styles.insignia100}>🚀</button> : null}
+            </div></div>
+
 
             
         </Modal.Body>
