@@ -22,7 +22,7 @@ export default function ModalMenuQuiz({ user, closeModal }) {
 
       <Modal show={show}>
         <Modal.Header closeButton onClick={() =>  closeModal()} >
-          <Modal.Title> Hola {user.name} Bienvenido al QuizCountries 🌎 </Modal.Title>
+          <Modal.Title> Hola {user?.name} Bienvenido al QuizCountries 🌎 </Modal.Title>
         </Modal.Header>
         <Modal.Body>
             {openChallenge ? <ModalQuiz user={user} closeModal={closeModalQuiz} /> : null}
