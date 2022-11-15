@@ -163,7 +163,7 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
       }
     let user = {email : input.email , password : input.password}
       
-    var json = await axios.post('http://localhost:3001/api/users/register/login' , user )
+    var json = await axios.post('https://deploy-countries-app-production.up.railway.app/api/users/register/login' , user )
     if (json.data.existe === true) {
       dispatch(loginUser(user))
       localStorage.setItem("user", input.email);
@@ -187,7 +187,7 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
 
   async function handleValidateUser(input) {
     try {
-      var json = await axios.get('http://localhost:3001/api/users/' + input.email)
+      var json = await axios.get('https://deploy-countries-app-production.up.railway.app/api/users/' + input.email)
       if (json.data.existe === true) {
         return setModalError(true) , setModalErrorMessage('El Usuario ya existe')
 
@@ -308,8 +308,8 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
                     name='password'
                     onChange={(e) => handleInputChangePassword(e)} />
                 </div>
-                <button className={styles.button} onClick={(e) => handleLogin(e)}>Iniciar Sesion</button>
-                <p className={styles.button} onClick={() => setChange(!changeLoginRegister)}>¿No estas registrado? Registrate</p>
+                <button className={styles.button} onClick={(e) => handleLogin(e)}>Iniciar Sesión</button>
+                <p className={styles.button} onClick={() => setChange(!changeLoginRegister)}>¿No estás registrado? Regístrate</p>
                 {modalError ? <ModalError error={modalErrorMessage} closeModal={handleCloseModalError} /> : null}
               </form>
             </div>}

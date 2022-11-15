@@ -59,7 +59,7 @@ export default function ModalCreateCountry({ user, closeModal }) {
                                     onChange={(e) => handleInputChange(e)}
                                 />
 
-                                <label className={styles.text} >Descripcion :</label>
+                                <label className={styles.text} >Descripción :</label>
                                 <input className={styles.input} 
                                 placeholder="Descripcion"  
                                 type="textarea" 
@@ -68,7 +68,7 @@ export default function ModalCreateCountry({ user, closeModal }) {
                                 onChange={(e) => handleInputChange(e)}></input>
 
 
-                                <label className={styles.text} >Foto de perfil :</label>
+                                <label className={styles.text} >Foto de perfil {'*url'} :</label>
                                 <input className={styles.input} type="url"
                                     value={input.continent}
                                     name='imagen_profile'

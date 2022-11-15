@@ -31,8 +31,6 @@ export default function ModalQuiz({ user, closeModal }) {
    }
   }, []);
 
-console.log('count' , count)
-
  
     function random(min, max) {
         if(quest.length -1 === 0){
@@ -43,8 +41,7 @@ console.log('count' , count)
     }
 
     const questDiscard = () => {
-        let discard = quest.filter( (e) => (e.titulo !== preguntas[preguntaActual].titulo &&
-           e.opciones[0]!== preguntas[preguntaActual].opciones[0] && e.opciones[1]!== preguntas[preguntaActual].opciones[1]  ) )
+        let discard = quest.filter( (e) => (e.num !== preguntas[preguntaActual].num))
             setQuest(discard)
     }
 
@@ -71,7 +68,7 @@ console.log('count' , count)
             return random(0 , quest.length -1)
         }
     }
-  console.log('preguntas', quest)
+
   return (
     <>
 

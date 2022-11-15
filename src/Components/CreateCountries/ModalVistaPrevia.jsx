@@ -32,11 +32,11 @@ export default function ModalVistaPrevia({ country, closeModal }) {
           <div><h5 className={styles.text}>🏙️ Capital: {country.capital}</h5></div>
           <div><h5 className={styles.text}>👉 Sub Region: {country.subregion}</h5></div>
           <div><h5 className={styles.text}>📍 Area: {country.area}</h5></div>
-          <div><h5 className={styles.text}>👤 Poblacion: {country.population}</h5></div>
-          <div><h5 className={styles.text}>🗺️ Localizacion: <a href={country.location}>{country.location}</a></h5></div>
+          <div><h5 className={styles.text}>👤 Población: {country.population}</h5></div>
+          <div><h5 className={styles.text}>🗺️ Localización: <a href={country.location}>{country.location}</a></h5></div>
           <div><h5 className={styles.text}>⌚ Zona Horaria: {country.timezones}</h5></div>
           </div>
-         <button className={styles.button} onClick={() => handleCreateCountry()}>Crear Pais 🌎</button>
+         <button className={styles.button} onClick={() => handleCreateCountry()}>Crear País 🌎</button>
         </Modal.Body>
       </Modal>
     </>

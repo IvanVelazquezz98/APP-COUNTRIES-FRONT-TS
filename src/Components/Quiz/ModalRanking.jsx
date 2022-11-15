@@ -18,7 +18,7 @@ export default function ModalRanking({ user, closeModal }) {
     }, []);
 
     const getRanking = async () => {
-        var json = await axios.get('http://localhost:3001/api/users/All')
+        var json = await axios.get('https://deploy-countries-app-production.up.railway.app/api/users/All')
 
         let ranking = json.data
        let filterUser = ranking.sort(function(a,b) {
@@ -30,8 +30,8 @@ export default function ModalRanking({ user, closeModal }) {
              }
              return 0
          }) 
-       
-        setRanking(filterUser)
+       let top20 = filterUser.slice(0,20)
+        setRanking(top20)
 
     }
 
@@ -56,7 +56,7 @@ export default function ModalRanking({ user, closeModal }) {
                 <Modal.Header closeButton onClick={() => closeModal()} >
                     <Modal.Title>Hola {user.name} este es el ranking de usuarios  </Modal.Title>
                 </Modal.Header>
-                <Modal.Body><p>* Puedes ver la informacion de los usuarios clickeando su nickname </p>
+                <Modal.Body><p>* Puedes ver la información de los usuarios cliqueando su nickname </p>
                     {ranking ? ranking.map((user) => {
                         return (<div className={styles.divRanking} ><h3 className={styles.title} >*  <div><p>{number++}  </p> </div></h3> 
                         <p className={styles.text} onClick={(e) => handleInfoUser(e , user)}> {user.name} </p> <div className={styles.pointContainer}>

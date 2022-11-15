@@ -116,7 +116,7 @@ export default function ModalCreateCountry({ user, handleClose }) {
                                     placeholder="Sub Region"
                                     onChange={(e) => handleInputChange(e)} />
 
-                                <label className={styles.text}>Poblacion :</label>
+                                <label className={styles.text}>Población :</label>
                                 <input className={styles.input}
                                     value={input.population}
                                     type="text"
@@ -132,7 +132,7 @@ export default function ModalCreateCountry({ user, handleClose }) {
                                     placeholder="Area"
                                     onChange={(e) => handleInputChange(e)} />
 
-                                <label className={styles.text}>Localizacion</label>
+                                <label className={styles.text}>Localización :</label>
                                 <input className={styles.input}
                                     value={input.location}
                                     type="text"

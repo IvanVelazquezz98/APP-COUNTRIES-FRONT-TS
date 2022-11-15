@@ -168,3 +168,15 @@
     align-content: center;
     background-color: #ccf8f8;
 }
+.point{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 2rem;
+    height: 2rem;
+    background-color: #f5ea1a;
+    border-radius: 1rem;
+    align-content: center;
+    flex-direction: row;
+    justify-content: center;
+}

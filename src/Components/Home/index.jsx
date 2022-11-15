@@ -117,7 +117,7 @@ export default function Home() {
     <div className={styles.firstContainer}>
       <div className={styles.navBar}>
         {user ? <button className={styles.button} onClick={() => setPerfilUser(!perfilUser)}> Perfil 👤</button> :
-          <button className={styles.button} onClick={() => openLoginRegister()}>Iniciar Sesion</button>}
+          <button className={styles.button} onClick={() => openLoginRegister()}>Iniciar Sesión</button>}
         {user ? <button className={styles.button} onClick={() => setFavoritesModal(true)}>Favoritos</button> : null}
         <button className={styles.button}>Foro</button>
         
@@ -131,7 +131,7 @@ export default function Home() {
       </div>
       { user ? 
       <div className={styles.quizCreate}>
-       <button className={styles.button} onClick={() => setCreateCountry(!createCountry)}>Crear Pais</button>
+       <button className={styles.button} onClick={() => setCreateCountry(!createCountry)}>Crear País</button>
         <button className={styles.button} onClick={(e) => setOpenQuiz(true)}>Juega el QuizCountries</button> 
       </div> : null}
       <div className={styles.about}><button className={styles.button} onClick={(e) => setOpenContact(true)}>Sobre mi</button></div>

@@ -61,6 +61,7 @@
     flex-direction: row;
     display:flex;
     height: 2rem;
+    margin-top: 1rem;
 }
 
 .text {

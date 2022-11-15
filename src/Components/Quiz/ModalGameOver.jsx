@@ -29,13 +29,13 @@ export default function ModalGameOver({ user, score , closeModal }) {
 
       <Modal show={show}>
         <Modal.Header >
-          <Modal.Title> Ups! Has cometido los 3 errores permitidos 😔 </Modal.Title>
+          <Modal.Title> ¡Ups! Has cometido los 3 errores permitidos 😔 </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h3 className={styles.title}>Tu puntuacion fue de {score}</h3>
-          {score > 50 ? <p className={styles.text}>Wow tu puntuacion fue muy alta, Felicidades! 😀 </p> : 
+          <h3 className={styles.title}>Tu puntuación fue de {score}</h3>
+          {score > 50 ? <p className={styles.text}>¡Wow tu puntuación fue muy alta, Felicidades! 😀 </p> : 
           <p className={styles.text}>Cuando tu puntuación supere las 50 serás un sabelotodo, así que ya sabes, puedes repetir el Quiz cuando quieras 😀</p>}
-          <button className={styles.button} onClick={(e) => handleSumbitScore(e)} >Subir puntuacion </button> <button className={styles.button} onClick={(e) => handleReturnHome()}>Volver a home</button>
+          <button className={styles.button} onClick={(e) => handleSumbitScore(e)} >Subir puntuación </button> <button className={styles.button} onClick={(e) => handleReturnHome()}>Volver a home</button>
         </Modal.Body>
       </Modal>
     </>

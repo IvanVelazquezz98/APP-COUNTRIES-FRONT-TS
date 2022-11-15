@@ -14,7 +14,7 @@ export default function ModalDetail({ user, country, closeModal }) {
 
   async function handleFavoritesForUser(user) {
     try{
-    var json = await axios.get('http://localhost:3001/api/user/favorites/user/' + user?.id)
+    var json = await axios.get('https://deploy-countries-app-production.up.railway.app/api/user/favorites/user/' + user?.id)
     if (json.data.existe === true) {
       let info = json.data
       let result = info.favorites.filter((e) => (e.name === country.name))
@@ -79,8 +79,8 @@ export default function ModalDetail({ user, country, closeModal }) {
             <div><h5 className={styles.text}>🏙️ Capital: {country.capital}</h5></div>
             <div><h5 className={styles.text}>👉 Sub Region: {country.subregion}</h5></div>
             <div><h5 className={styles.text}>📍 Area: {country.area}</h5></div>
-            <div><h5 className={styles.text}>👤 Poblacion: {country.population}</h5></div>
-            <div><h5 className={styles.text}>🗺️ Localizacion: <a href={country.location}>{country.location}</a></h5></div>
+            <div><h5 className={styles.text}>👤 Población: {country.population}</h5></div>
+            <div><h5 className={styles.text}>🗺️ Localización: <a href={country.location}>{country.location}</a></h5></div>
             <div><h5 className={styles.text}>⌚ Zona Horaria: {country.timezones}</h5></div>
             {favoritesUser ? <div className={styles.content}> <button className={styles.button} onClick={(e) => handleSetFavorite(e)}> ❤️ </button> </div> : null}
           </div>
