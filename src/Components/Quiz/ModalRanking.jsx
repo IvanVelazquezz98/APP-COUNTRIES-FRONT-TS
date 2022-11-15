@@ -18,7 +18,7 @@ export default function ModalRanking({ user, closeModal }) {
     }, []);
 
     const getRanking = async () => {
-        var json = await axios.get('https://deploy-countries-app-production.up.railway.app/api/users/All')
+        var json = await axios.get('https://countries-app-zqvw.onrender.com/api/users/All')
 
         let ranking = json.data
        let filterUser = ranking.sort(function(a,b) {
