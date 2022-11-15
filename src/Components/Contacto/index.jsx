@@ -50,7 +50,7 @@ export default function ModalError({  closeModal }) {
           </a>
           <h5>Readme del proyecto y mi GitHub:</h5><a
             rel="noreferrer"
-            href="https://github.com/IvanVelazquezz98"
+            href="https://github.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/"
             target="_blank"
           >
             <img className={styles.image} alt="github" src={git} />
