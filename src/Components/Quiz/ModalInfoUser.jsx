@@ -28,7 +28,7 @@ export default function ModalInfoUser({closeModal , user}) {
 
   async function handleCountriesForUser(user) {
     try {
-      var json = await axios.get('https://deploy-countries-app-production.up.railway.app/api/countries/user/' + user.id)
+      var json = await axios.get('https://countries-app-zqvw.onrender.com/api/countries/user/' + user.id)
       if (json.data.existe === true) {
         return setCountriesByUser(json.data)
       } else {
