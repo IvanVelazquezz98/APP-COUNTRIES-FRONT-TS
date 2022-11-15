@@ -18,7 +18,7 @@ export default function ModalFavorites({ user, closeModal }) {
     console.log('favoritos del usuario', favoritesUser)
     async function handleFavoritesForUser(user) {
         try {
-            var json = await axios.get('https://deploy-countries-app-production.up.railway.app/api/user/favorites/user/' + user.id)
+            var json = await axios.get('https://countries-app-zqvw.onrender.com/api/user/favorites/user/' + user.id)
             if (json.data.existe === true) {
                 return setFavoritesUser(json.data)
             } else {
