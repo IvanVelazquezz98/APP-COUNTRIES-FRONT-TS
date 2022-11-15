@@ -13,26 +13,26 @@ You can see more of the application by accessing the video link:</p>
 <p>I also leave you some photos of the application working:</p>
 
 <h4> Home </h4>
-<img src='https://raw.githubusercontent.com/IvanVelazquezz98/IvanVelazquezz98/master/assets/home.jpg'>
+<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/master/assets/home.jpg'>
 <br></br>
-<h4> Game detail </h4>
-<img src='https://raw.githubusercontent.com/IvanVelazquezz98/IvanVelazquezz98/master/assets/gamedetail.jpg'>
+<h4> Perfil </h4>
+<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/master/assets/perfil.jpg'>
 <br></br>
-<h4> Create Videogames </h4>
-<img src='https://raw.githubusercontent.com/IvanVelazquezz98/IvanVelazquezz98/master/assets/creategame1.jpg'>
-<img src='https://raw.githubusercontent.com/IvanVelazquezz98/IvanVelazquezz98/master/assets/creategame2.jpg'>
-<br></br>
-<h4> Filters </h4>
-<img src='https://raw.githubusercontent.com/IvanVelazquezz98/IvanVelazquezz98/master/assets/filters.jpg'>
+<h4> Create Country </h4>
+<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/master/assets/create.jpg'>
 <br></br>
 <h4> Favorites </h4>
-<img src='https://raw.githubusercontent.com/IvanVelazquezz98/IvanVelazquezz98/master/assets/favorites.jpg'>
+<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/master/assets/favorites.jpg'>
+<br></br>
+<h4> Quiz </h4>
+<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/master/assets/menuquiz.jpg'>
+<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/master/assets/quiz.jpg'>
 
-<p>I also leave you here the link of the web page:https://app-countries-front-ts.vercel.app/ </p>
+<p>I also leave you here the link of the web page:  https://app-countries-front-ts.vercel.app/ </p>
 
 <h3>Now let's talk about technologies used: </h3>
-<p>Front : React, Redux, Javascript, Typescript and bootstrap</p>
-<p>Back: NodeJs, Express and use PostgreSQL as a database</p>
+<p>Front : React, Redux, Javascript, Typescript and bootstrap . DEPLOY: VERCEL</p>
+<p>Back : NodeJs, Express and use PostgreSQL as a database DEPLOY: RAILWAY</p>
 
 
 
