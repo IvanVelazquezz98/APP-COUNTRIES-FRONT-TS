@@ -78,7 +78,7 @@ export default function ModalPerfil({closeModal , user}) {
             <h4 className={styles.title}> Descripción : <p className={styles.info}>{user?.descripcion ? user.descripcion : 
             <p className={styles.info}>-</p>}</p> </h4>
             <h4 className={styles.title}>Email : <p className={styles.info}>{user?.email}</p>  </h4>
-            <h4 className={styles.title}> Puntuación de Quiz: {  user.point  ? <div className={styles.title}> 
+            <h4 className={styles.title}> Puntuación de Quiz: {  user?.point  ? <div className={styles.title}> 
             <p className={styles.point}>{user.point}</p> </div> :
             <div className={styles.info} >
                 <p  className={styles.info}>Todavía no tienes puntuación</p>
