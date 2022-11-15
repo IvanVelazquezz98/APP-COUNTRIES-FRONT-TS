@@ -13,20 +13,20 @@ You can see more of the application by accessing the video link:</p>
 <p>I also leave you some photos of the application working:</p>
 
 <h4> Home </h4>
-<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/assets/home.jpg'>
+<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/src/assets/home.jpg'>
 <br></br>
 <h4> Perfil </h4>
-<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/assets/perfil.jpg'>
+<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/src/assets/perfil.jpg'>
 <br></br>
 <h4> Create Country </h4>
-<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/assets/create.jpg'>
+<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/src/assets/create.jpg'>
 <br></br>
 <h4> Favorites </h4>
-<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/assets/favorites.jpg'>
+<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/src/assets/favorites.jpg'>
 <br></br>
 <h4> Quiz </h4>
-<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/assets/menuquiz.jpg'>
-<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/assets/quiz.jpg'>
+<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/src/assets/menuquiz.jpg'>
+<img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/src/assets/quiz.jpg'>
 
 <p>I also leave you here the link of the web page:  https://app-countries-front-ts.vercel.app/ </p>
 
