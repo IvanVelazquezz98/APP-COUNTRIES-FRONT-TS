@@ -163,7 +163,7 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
       }
     let user = {email : input.email , password : input.password}
       
-    var json = await axios.post('https://deploy-countries-app-production.up.railway.app/api/users/register/login' , user )
+    var json = await axios.post('https://countries-app-zqvw.onrender.com/api/users/register/login' , user )
     if (json.data.existe === true) {
       dispatch(loginUser(user))
       localStorage.setItem("user", input.email);
@@ -187,7 +187,7 @@ export default function LoginRegister({ closeModalRegisterLogin }) {
 
   async function handleValidateUser(input) {
     try {
-      var json = await axios.get('https://deploy-countries-app-production.up.railway.app/api/users/' + input.email)
+      var json = await axios.get('https://countries-app-zqvw.onrender.com/api/users/' + input.email)
       if (json.data.existe === true) {
         return setModalError(true) , setModalErrorMessage('El Usuario ya existe')
 
