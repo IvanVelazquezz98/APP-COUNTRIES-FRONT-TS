@@ -28,7 +28,7 @@ You can see more of the application by accessing the video link:</p>
 <img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/src/assets/menuquiz.jpg'>
 <img src='https://raw.githubusercontent.com/IvanVelazquezz98/APP-COUNTRIES-FRONT-TS/main/src/assets/quiz.jpg'>
 
-<p>I also leave you here the link of the web page:  https://app-countries-front-ts.vercel.app/ </p>
+<p>I also leave you here the link of the web page:  https://deploycountriesfront.vercel.app/ </p>
 
 <h3>Now let's talk about technologies used: </h3>
 <p>Front : React, Redux, Javascript, Typescript and bootstrap . DEPLOY: VERCEL</p>
